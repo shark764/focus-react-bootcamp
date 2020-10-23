@@ -1,0 +1,69 @@
+body {
+  background-color: #ffffff;
+  margin: 58px;
+  color: #555555;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 8pt;
+}
+a {
+  color: #cc5555;
+  text-decoration: none;
+}
+a:visited {
+  color: #cc5555;
+  text-decoration: none;
+}
+a:active {
+  color: #ff0000;
+  text-decoration: none;
+}
+a:hover {
+  color: #ff0000;
+  text-decoration: none;
+}
+.button {
+  height: 30px;
+  width: 40px;
+  background-color: #555555;
+  border-color: #555555;
+  color: #ffffff;
+}
+.invisbutton {
+  height: 28px;
+  width: 40px;
+  background-color: #064968;
+  border-color: #064968;
+  border-style: solid;
+}
+.display {
+  height: 50px;
+  width: 217px;
+  background-color: #ffffff;
+  border-color: #359dbd;
+  color: #222222;
+  border-style: solid;
+  text-align: right;
+  font-size: 22pt;
+}
+.redbutton {
+  height: 30px;
+  width: 40px;
+  background-color: #ee0000;
+  border-color: #ee0000;
+  color: #ffffff;
+}
+.yellowbutton {
+  height: 30px;
+  width: 40px;
+  background-color: #eeee00;
+  border-color: #eeee00;
+  color: #000000;
+}
+.device {
+  height: 30px;
+  width: 40px;
+  background-color: #004d70;
+  border-color: #7555c6;
+  border-style: ridge;
+}
