@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Main from './Containers/Main';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <main className="App-main">
+        <Main />
+      </main>
     </div>
   );
 }
