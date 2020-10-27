@@ -1,16 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Main from './Containers/Main';
+import Routing from './Components/Routing';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -22,7 +19,11 @@ function App() {
       </header>
 
       <main className="App-main">
-        <Main />
+        {/*
+          We don't render <Main> here, instead we render <Routing>
+          component and it will take care of that
+        */}
+        <Routing />
       </main>
     </div>
   );
