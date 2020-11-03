@@ -1,3 +1,4 @@
+import { Box, Grid } from 'grommet';
 import React, { useEffect, useState } from 'react';
 import ClassExample from '../Components/ClassExample';
 import ClassWithLifeCycleExample from '../Components/ClassWithLifeCycleExample';
@@ -25,13 +26,43 @@ function Main() {
   }, []);
 
   return (
-    <div className="App-examples">
-      <ClassExample />
-      <ClassWithStateExample />
-      {!clear && <ClassWithLifeCycleExample />}
-      <FunctionExample />
-      {!clear && <FunctionWithStateExample />}
-    </div>
+    <Grid>
+      <Box align="stretch" pad={{ horizontal: 'large' }}>
+        <Grid
+          areas={[
+            { name: 'main1', start: [0, 0], end: [0, 0] },
+            { name: 'main2', start: [0, 1], end: [0, 1] },
+            { name: 'main3', start: [0, 2], end: [0, 2] },
+            { name: 'main4', start: [0, 3], end: [0, 3] },
+            { name: 'main5', start: [0, 4], end: [0, 4] },
+          ]}
+          columns={['large']}
+          rows={['flex', 'flex', 'flex', 'flex', 'flex']}
+          gap="small"
+          fill
+        >
+          <Box gridArea="main1" background="secondary" pad="medium">
+            <ClassExample />
+          </Box>
+          <Box gridArea="main2" background="secondary" pad="medium">
+            <ClassWithStateExample />
+          </Box>
+          {!clear && (
+            <Box gridArea="main3" background="primary" pad="medium">
+              <ClassWithLifeCycleExample />
+            </Box>
+          )}
+          <Box gridArea="main4" background="secondary" pad="medium">
+            <FunctionExample />
+          </Box>
+          {!clear && (
+            <Box gridArea="main5" background="primary" pad="medium">
+              <FunctionWithStateExample />
+            </Box>
+          )}
+        </Grid>
+      </Box>
+    </Grid>
   );
 }
 
