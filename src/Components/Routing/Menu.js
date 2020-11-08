@@ -59,6 +59,15 @@ function Menu() {
           </Text>
         </Link>
       </Box>
+
+      <Box pad={{ horizontal: 'medium', vertical: 'small' }}>
+        <Link to="/redux">
+          <Node color="light-1" />
+          <Text size="large" color="light-1" margin="small">
+            Redux
+          </Text>
+        </Link>
+      </Box>
     </Box>
   );
 }
