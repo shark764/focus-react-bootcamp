@@ -1,4 +1,4 @@
-import { employees } from './data';
+import { employees } from '../data';
 
 const initialState = {
   employees,

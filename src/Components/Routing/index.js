@@ -7,6 +7,8 @@ import JSXExample from '../../Containers/JSXExample';
 import TodoExample from '../../Containers/TodoExample';
 import APIInteractions from '../../Containers/APIInteractions';
 import ReduxExample from '../../Containers/ReduxExample';
+import ReduxToolkit from '../../Containers/ReduxToolkit';
+import ReactQuery from '../../Containers/ReactQuery';
 import NoMatch from './NoMatch';
 
 /**
@@ -39,6 +41,12 @@ function Routing() {
         </Route>
         <Route path="/redux">
           <ReduxExample />
+        </Route>
+        <Route path="/redux-toolkit">
+          <ReduxToolkit />
+        </Route>
+        <Route path="/react-query">
+          <ReactQuery />
         </Route>
         <Route path="*">
           <NoMatch />
