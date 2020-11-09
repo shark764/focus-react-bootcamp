@@ -44,7 +44,7 @@ export const FormLayout = (props) => {
         margin="none"
         hoverIndicator
         icon={<FormClose />}
-        onClick={() => closeSideForm()}
+        onClick={closeSideForm}
       />
 
       <Grid>
@@ -120,8 +120,8 @@ FormLayout.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const selectedEmployee = state.employees.find((employee) => {
-    return employee.userId === state.selectedEmployeeId;
+  const selectedEmployee = state.root.employees.find((employee) => {
+    return employee.userId === state.root.selectedEmployeeId;
   });
 
   return {

@@ -1,6 +1,22 @@
-import { createStore } from 'redux';
-import rootReducer from './reducers';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import rootReducer from './reducers/rootReducer';
+import appSlice from './reducers/appSlice';
 
-const store = createStore(rootReducer);
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: false,
+    immutableCheck: false,
+  }),
+];
+
+const reducer = {
+  root: rootReducer,
+  [appSlice.name]: appSlice.reducer,
+};
+
+const store = configureStore({
+  reducer,
+  middleware,
+});
 
 export default store;

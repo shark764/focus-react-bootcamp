@@ -35,9 +35,9 @@ ReduxExample.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  formIsOpen: state.formIsOpen,
-  selectedEmployeeId: state.selectedEmployeeId
-    ? state.selectedEmployeeId
+  formIsOpen: state.root.formIsOpen,
+  selectedEmployeeId: state.root.selectedEmployeeId
+    ? state.root.selectedEmployeeId
     : 'none',
 });
 

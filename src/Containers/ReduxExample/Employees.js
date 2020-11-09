@@ -80,7 +80,7 @@ Employees.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  employees: state.employees,
+  employees: state.root.employees,
 });
 
 const actions = {
