@@ -38,6 +38,14 @@ const theme = {
       height: '20px',
     },
   },
+  card: {
+    container: {
+      elevation: 'large',
+    },
+    footer: {
+      pad: 'medium',
+    },
+  },
 };
 
 const AppBar = (props) => (

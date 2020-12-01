@@ -20,7 +20,7 @@ function Users() {
     data: users,
   } = useQuery('fetchUsers', async () => {
     const { data } = await Axios.get(
-      `https://gorest.co.in/public-api/users?page=66`
+      `https://gorest.co.in/public-api/users?page=70`
     );
     return data.data;
   });
