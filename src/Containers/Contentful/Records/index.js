@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from 'react';
+import { useQuery } from 'react-query';
+import {
+  Box, Button, Heading, Text,
+} from 'grommet';
+import { Sync } from 'grommet-icons';
 import { SearchContext } from '../Context/SearchContext';
 import { getEntries } from '../sdk';
-import { useQuery } from 'react-query';
-import { Box, Button, Heading, Text } from 'grommet';
 import Spinner from '../../../Components/Grommet/Spinner';
-import { Sync } from 'grommet-icons';
 import BaseList from '../Components/BaseList';
 
 function Records() {
@@ -16,17 +18,8 @@ function Records() {
       'fields.title[match]': searchString,
     });
 
-    console.log(
-      `%cRecords fetched using... "${searchString}":`,
-      'background: #ccc; color: #444;',
-      entries
-    );
+    console.log(`%cRecords fetched using... "${searchString}":`, 'background: #ccc; color: #444;', entries);
     return entries;
-  };
-
-  const handleManualRefetch = () => {
-    // manually refetch
-    refetch();
   };
 
   const {
@@ -40,6 +33,11 @@ function Records() {
     refetchOnWindowFocus: false,
     enabled: false, // turned off by default, manual refetch is needed
   });
+
+  const handleManualRefetch = () => {
+    // manually refetch
+    refetch();
+  };
 
   useEffect(() => {
     refetch();
@@ -63,11 +61,7 @@ function Records() {
       {records && (
         <>
           <Box direction="row" gap="medium" margin={{ vertical: 'medium' }}>
-            <Button
-              icon={<Sync />}
-              label="Manual Refetch"
-              onClick={handleManualRefetch}
-            />
+            <Button icon={<Sync />} label="Manual Refetch" onClick={handleManualRefetch} />
 
             {isFetching && (
               <>

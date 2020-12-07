@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+package.json
+package-lock.json
+
+.eslintrc.js
+.prettierrc.js
+src/serviceWorker.js

@@ -1,7 +1,10 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Box, Button, Form, FormField, Select, TextInput } from 'grommet';
+import {
+  Box, Button, Form, FormField, Select, TextInput,
+} from 'grommet';
 import { FormAdd, FormTrash } from 'grommet-icons';
 import { addEmployee, updateEmployee } from '../../redux/actions';
 
@@ -63,11 +66,7 @@ export const FormLayout = (props) => {
           </FormField>
 
           <FormField name="region" label="Region" required>
-            <Select
-              name="region"
-              placeholder="Select a region"
-              options={['NA', 'CA', 'SA', 'EU', 'AS', 'OC', 'AF']}
-            />
+            <Select name="region" placeholder="Select a region" options={['NA', 'CA', 'SA', 'EU', 'AS', 'OC', 'AF']} />
           </FormField>
 
           <FormField name="phoneNumber" label="Phone Number" required>
@@ -85,18 +84,15 @@ export const FormLayout = (props) => {
 };
 
 FormLayout.propTypes = {
-  selectedEmployee: PropTypes.object,
   addEmployee: PropTypes.func,
   updateEmployee: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
-  const selectedEmployee = state.root.employees.find((employee) => {
-    return employee.userId === state.root.selectedEmployeeId;
-  });
+  const selectedEmployee = state.root.employees.find((employee) => employee.userId === state.root.selectedEmployeeId);
 
   return {
-    initialValues: selectedEmployee ? selectedEmployee : defaultValue,
+    initialValues: selectedEmployee || defaultValue,
   };
 };
 

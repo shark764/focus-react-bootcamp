@@ -7,3 +7,5 @@ export function truncateString(str, num) {
   // Return str truncated with '...' concatenated to the end of str.
   return `${str.slice(0, num)}...`;
 }
+
+export default truncateString;

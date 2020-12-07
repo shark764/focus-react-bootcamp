@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
+import {
+  Box, Button, DateInput, Form, FormField, Grid,
+} from 'grommet';
 import { TodosContext } from './Context';
-import { Box, Button, DateInput, Form, FormField, Grid } from 'grommet';
 
 function NavBar() {
   const [, setTodos] = useContext(TodosContext);
@@ -21,12 +23,7 @@ function NavBar() {
       <Box pad="none">
         <Form onSubmit={({ value }) => onSubmit(value)}>
           <Box direction="row" gap="medium">
-            <FormField
-              name="description"
-              label="Description"
-              placeholder="I want to..."
-              required
-            />
+            <FormField name="description" label="Description" placeholder="I want to..." required />
 
             <FormField label="Date To">
               <DateInput name="dateTo" format="mm/dd/yyyy" />

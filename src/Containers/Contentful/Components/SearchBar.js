@@ -1,4 +1,6 @@
-import { Box, Nav, Text, TextInput } from 'grommet';
+import {
+  Box, Nav, Text, TextInput,
+} from 'grommet';
 import { Search } from 'grommet-icons';
 import React, { useContext } from 'react';
 import { SearchContext } from '../Context/SearchContext';

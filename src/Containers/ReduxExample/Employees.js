@@ -1,16 +1,19 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Box, Button, DataTable, Heading } from 'grommet';
-import { Actions, FormClose, FormEdit, UserAdd } from 'grommet-icons';
 import {
-  openSideForm,
-  setSelectedEmployeeId,
-  removeEmployee,
-} from '../../redux/actions';
+  Box, Button, DataTable, Heading,
+} from 'grommet';
+import {
+  Actions, FormClose, FormEdit, UserAdd,
+} from 'grommet-icons';
+import { openSideForm, setSelectedEmployeeId, removeEmployee } from '../../redux/actions';
 
 export const Employees = (props) => {
-  const openSideForm = (id) => {
+  const openSidePanelForm = (id) => {
     props.setSelectedEmployeeId(id);
     props.openSideForm(true);
   };
@@ -18,15 +21,10 @@ export const Employees = (props) => {
   return (
     <Box background="light-1" pad="medium" gap="medium" fill>
       <Heading level="3" margin="none" color="brand">
-        Hey look!, Here's a list of employees
+        Hey look!, Here&#39;s a list of employees
       </Heading>
 
-      <Button
-        onClick={() => openSideForm(null)}
-        label="Create"
-        alignSelf="end"
-        icon={<UserAdd />}
-      />
+      <Button onClick={() => openSidePanelForm(null)} label="Create" alignSelf="end" icon={<UserAdd />} />
 
       <DataTable
         background={['light-4', 'controls']}
@@ -49,7 +47,7 @@ export const Employees = (props) => {
                   margin="none"
                   hoverIndicator
                   icon={<FormEdit color="brand" />}
-                  onClick={() => openSideForm(employee.userId)}
+                  onClick={() => openSidePanelForm(employee.userId)}
                   plain
                   color="status-critical"
                 />

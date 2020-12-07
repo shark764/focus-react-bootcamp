@@ -6,13 +6,11 @@ import { routes } from './utils';
 function NavBar() {
   return (
     <Nav direction="row">
-      {routes.map((route) => {
-        return (
-          <Link key={route.to} to={route.to} title={route.text}>
-            {route.icon}
-          </Link>
-        );
-      })}
+      {routes.map((route) => (
+        <Link key={route.to} to={route.to} title={route.text}>
+          {route.icon}
+        </Link>
+      ))}
     </Nav>
   );
 }

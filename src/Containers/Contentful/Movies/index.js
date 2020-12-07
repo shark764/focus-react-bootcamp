@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useEffect, useContext } from 'react';
+import React, {
+  useState, useCallback, useEffect, useContext,
+} from 'react';
 import BaseList2 from '../Components/BaseList2';
 import { SearchContext } from '../Context/SearchContext';
 import { getEntries } from '../sdk';
@@ -13,11 +15,7 @@ function Movies() {
       'fields.title[match]': searchString,
     });
 
-    console.log(
-      `%cMovies fetched using... "${searchString}":`,
-      'background: #ccc; color: #444;',
-      entries
-    );
+    console.log(`%cMovies fetched using... "${searchString}":`, 'background: #ccc; color: #444;', entries);
 
     setMovies(entries);
   }, [searchString]);

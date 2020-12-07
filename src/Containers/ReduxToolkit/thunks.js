@@ -1,21 +1,16 @@
 import Axios from 'axios';
 import {
-  setData,
-  addUser,
-  updateUser,
-  removeUser,
+  setData, addUser, updateUser, removeUser,
 } from '../../redux/reducers/appSlice';
 
 export function fetchData() {
   return (dispatch) => {
     Axios.get('https://reqres.in/api/users')
       .then(({ data: { data } }) => {
-        const modifiedData = data.map((item) => {
-          return {
-            ...item,
-            job: 'Developer',
-          };
-        });
+        const modifiedData = data.map((item) => ({
+          ...item,
+          job: 'Developer',
+        }));
         dispatch(setData(modifiedData));
       })
       .catch((err) => {

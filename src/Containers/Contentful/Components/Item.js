@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import {
-  Anchor,
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  Collapsible,
-  Heading,
-  Image,
-  Paragraph,
+  Anchor, Box, Button, Card, CardBody, CardFooter, Collapsible, Heading, Image, Paragraph,
 } from 'grommet';
-import { FormDown, FormUp, Favorite, ShareOption } from 'grommet-icons';
+import {
+  FormDown, FormUp, Favorite, ShareOption,
+} from 'grommet-icons';
 import { useHistory } from 'react-router-dom';
 
 function Item({ item }) {
@@ -21,13 +14,7 @@ function Item({ item }) {
 
   const ExpandButton = ({ ...rest }) => {
     const Icon = open ? FormUp : FormDown;
-    return (
-      <Button
-        hoverIndicator="light-4"
-        icon={<Icon color="brand" />}
-        {...rest}
-      />
-    );
+    return <Button hoverIndicator="light-4" icon={<Icon color="brand" />} {...rest} />;
   };
 
   const goToSinglePage = (id) => {
@@ -37,11 +24,7 @@ function Item({ item }) {
   return (
     <Card elevation="large" width="medium">
       <CardBody height="small">
-        <Image
-          fit="cover"
-          src={item.image.file.url}
-          a11yTitle="item reference image"
-        />
+        <Image fit="cover" src={item.image.file.url} a11yTitle="item reference image" />
       </CardBody>
       <Box pad={{ horizontal: 'medium' }} responsive={false}>
         <Heading level="3" margin={{ vertical: 'medium' }}>
@@ -58,11 +41,7 @@ function Item({ item }) {
               setFavorite((fav) => !fav);
             }}
           />
-          <Button
-            icon={<ShareOption color="plain" />}
-            hoverIndicator
-            onClick={() => goToSinglePage(item.id)}
-          />
+          <Button icon={<ShareOption color="plain" />} hoverIndicator onClick={() => goToSinglePage(item.id)} />
           <Anchor href={item.url} label="Explore" target="_blank" />
         </Box>
         <ExpandButton onClick={() => setOpen((isOpen) => !isOpen)} />

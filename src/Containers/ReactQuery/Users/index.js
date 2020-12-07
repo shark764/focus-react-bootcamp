@@ -1,16 +1,23 @@
 import Axios from 'axios';
-import { Box, Button, DataTable, Heading, Layer, Text } from 'grommet';
-import { Dislike, Like, Sync, User, UserAdd, UserFemale } from 'grommet-icons';
+import {
+  Box, Button, DataTable, Heading, Layer, Text,
+} from 'grommet';
+import {
+  Dislike, Like, Sync, User, UserAdd, UserFemale,
+} from 'grommet-icons';
 import { DateTime } from 'luxon';
 import React, { useState } from 'react';
-import { useQuery, useMutation, queryCache } from 'react-query';
-import Spinner from '../../../Components/Grommet/Spinner';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
+import GrommetSpinner from '../../../Components/Grommet/Spinner';
 import { token } from '../utils';
 import FormUser from './FormUser';
 
 function Users() {
   // Hooks first...
   const [open, setOpen] = useState(false);
+
+  // Access the client
+  const queryClient = useQueryClient();
 
   const {
     // status,
@@ -19,43 +26,40 @@ function Users() {
     error: queryError,
     data: users,
   } = useQuery('fetchUsers', async () => {
-    const { data } = await Axios.get(
-      `https://gorest.co.in/public-api/users?page=70`
-    );
+    const { data } = await Axios.get('https://gorest.co.in/public-api/users?page=70');
     return data.data;
   });
 
-  const [postUser] = useMutation(
-    (data) =>
-      Axios.post('https://gorest.co.in/public-api/users', data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }),
+  const onOpen = () => setOpen(true);
+  const onClose = () => setOpen(undefined);
+
+  const postUser = useMutation(
+    (data) => Axios.post('https://gorest.co.in/public-api/users', data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }),
     {
       onSuccess: () => {
         // Query Invalidations
-        queryCache.invalidateQueries('fetchUsers');
+        queryClient.invalidateQueries('fetchUsers');
 
         onClose();
         console.log('User created successfully');
         console.info(
           '%c Invalidating cache. React-Query will refetch data again to sincronize with server.',
-          'background: #222; color: #bada55'
+          'background: #222; color: #bada55',
         );
       },
       onError: (error) => {
         console.error(error);
       },
-    }
+    },
   );
-
-  const onOpen = () => setOpen(true);
-  const onClose = () => setOpen(undefined);
 
   const onSubmit = (values) => {
     console.log('values', values);
-    postUser({
+    postUser.mutate({
       ...values,
       status: values.status ? 'Active' : 'Inactive',
     });
@@ -63,7 +67,7 @@ function Users() {
 
   const onRefresh = () => {
     // Query Invalidations
-    queryCache.invalidateQueries('fetchUsers');
+    queryClient.invalidateQueries('fetchUsers');
   };
 
   return (
@@ -75,7 +79,7 @@ function Users() {
       )}
       {isLoading ? (
         <Box pad="large" margin="large">
-          <Spinner />
+          <GrommetSpinner />
         </Box>
       ) : (
         <>
@@ -124,44 +128,34 @@ function Users() {
               {
                 property: 'gender',
                 header: <Text>Gender</Text>,
-                render: (datum) =>
-                  datum.gender === 'Male' ? (
-                    <User color="brand" size="medium" />
-                  ) : (
-                    <UserFemale color="secondary" size="medium" />
-                  ),
+                render: (datum) => (datum.gender === 'Male' ? (
+                  <User color="brand" size="medium" />
+                ) : (
+                  <UserFemale color="secondary" size="medium" />
+                )),
               },
               {
                 property: 'created_at',
                 header: <Text>Created At</Text>,
                 render: (datum) => (
-                  <Text size="small">
-                    {DateTime.fromISO(datum.created_at).toLocaleString(
-                      DateTime.DATETIME_MED
-                    )}
-                  </Text>
+                  <Text size="small">{DateTime.fromISO(datum.created_at).toLocaleString(DateTime.DATETIME_MED)}</Text>
                 ),
               },
               {
                 property: 'updated_at',
                 header: <Text>Updated At</Text>,
                 render: (datum) => (
-                  <Text size="small">
-                    {DateTime.fromISO(datum.updated_at).toLocaleString(
-                      DateTime.DATETIME_MED
-                    )}
-                  </Text>
+                  <Text size="small">{DateTime.fromISO(datum.updated_at).toLocaleString(DateTime.DATETIME_MED)}</Text>
                 ),
               },
               {
                 property: 'status',
                 header: <Text>Status</Text>,
-                render: (datum) =>
-                  datum.status === 'Active' ? (
-                    <Like color="brand" size="medium" />
-                  ) : (
-                    <Dislike color="default" size="medium" />
-                  ),
+                render: (datum) => (datum.status === 'Active' ? (
+                  <Like color="brand" size="medium" />
+                ) : (
+                  <Dislike color="default" size="medium" />
+                )),
               },
             ]}
             data={users}
@@ -170,17 +164,8 @@ function Users() {
       )}
 
       {open && (
-        <Layer
-          position="right"
-          full="vertical"
-          modal
-          onClickOutside={onClose}
-          onEsc={onClose}
-        >
-          <FormUser
-            onSubmit={({ value }) => onSubmit(value)}
-            onClose={onClose}
-          />
+        <Layer position="right" full="vertical" modal onClickOutside={onClose} onEsc={onClose}>
+          <FormUser onSubmit={({ value }) => onSubmit(value)} onClose={onClose} />
         </Layer>
       )}
     </>

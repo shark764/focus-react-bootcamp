@@ -1,12 +1,5 @@
 import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Text,
+  Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Text,
 } from 'grommet';
 import { Close, Edit } from 'grommet-icons';
 import React from 'react';
@@ -40,11 +33,7 @@ function Profile({ profile, onRemove }) {
         </CardBody>
         <CardFooter pad={{ horizontal: 'small' }} background="light-2">
           <Button icon={<Edit color="brand" />} hoverIndicator />
-          <Button
-            icon={<Close color="brand" />}
-            hoverIndicator
-            onClick={() => onRemove(profile.id)}
-          />
+          <Button icon={<Close color="brand" />} hoverIndicator onClick={() => onRemove(profile.id)} />
         </CardFooter>
       </Card>
     </Box>

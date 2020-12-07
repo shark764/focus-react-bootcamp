@@ -6,25 +6,21 @@ import Employees from './Employees';
 import FormLayout from './Form';
 import { openSideForm, setSelectedEmployeeId } from '../../redux/actions';
 
-function ReduxExample(props) {
+function ReduxExample({
+  formIsOpen, selectedEmployeeId, rdxSetSelectedEmployeeId, rdxOpenSideForm,
+}) {
   const closeSideForm = () => {
-    props.setSelectedEmployeeId(null);
-    props.openSideForm(false);
+    rdxSetSelectedEmployeeId(null);
+    rdxOpenSideForm(false);
   };
 
   return (
     <Box align="stretch" pad={{ horizontal: 'large' }}>
       <Employees />
 
-      {props.formIsOpen && (
-        <Layer
-          position="right"
-          full="vertical"
-          modal
-          onClickOutside={closeSideForm}
-          onEsc={closeSideForm}
-        >
-          <FormLayout key={props.selectedEmployeeId} />
+      {formIsOpen && (
+        <Layer position="right" full="vertical" modal onClickOutside={closeSideForm} onEsc={closeSideForm}>
+          <FormLayout key={selectedEmployeeId} />
         </Layer>
       )}
     </Box>
@@ -33,20 +29,18 @@ function ReduxExample(props) {
 
 ReduxExample.propTypes = {
   formIsOpen: PropTypes.bool,
-  setSelectedEmployeeId: PropTypes.func,
-  openSideForm: PropTypes.func,
+  rdxSetSelectedEmployeeId: PropTypes.func,
+  rdxOpenSideForm: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   formIsOpen: state.root.formIsOpen,
-  selectedEmployeeId: state.root.selectedEmployeeId
-    ? state.root.selectedEmployeeId
-    : 'none',
+  selectedEmployeeId: state.root.selectedEmployeeId ? state.root.selectedEmployeeId : 'none',
 });
 
 const actions = {
-  setSelectedEmployeeId,
-  openSideForm,
+  rdxSetSelectedEmployeeId: setSelectedEmployeeId,
+  rdxOpenSideForm: openSideForm,
 };
 
 export default connect(mapStateToProps, actions)(ReduxExample);

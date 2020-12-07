@@ -1,7 +1,7 @@
 import { Box, Grid } from 'grommet';
 import React from 'react';
 import CalcStateExample from './CalcStateExample';
-import ClassCalcStateExample from './ClassCalcStateExample';
+import ClassStateExample from './ClassCalcStateExample';
 import StateExample from './StateExample';
 
 function StateVsProps() {
@@ -28,7 +28,7 @@ function StateVsProps() {
           </Box>
 
           <Box gridArea="main3" background="secondary" pad="medium">
-            <ClassCalcStateExample />
+            <ClassStateExample />
           </Box>
         </Grid>
       </Box>

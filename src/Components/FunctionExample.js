@@ -7,7 +7,7 @@ function FunctionExample() {
    */
   return (
     <div className="App-example">
-      <p>Hi, I'm a function</p>
+      <p>Hi, I&#39;m a function</p>
     </div>
   );
 }

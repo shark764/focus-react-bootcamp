@@ -1,6 +1,8 @@
 import React from 'react';
 import { DateTime } from 'luxon';
-import { Box, Button, CheckBox, Heading, Text } from 'grommet';
+import {
+  Box, Button, CheckBox, Heading, Text,
+} from 'grommet';
 import { FormClose } from 'grommet-icons';
 
 function Item({ todo, update, remove }) {
@@ -15,20 +17,17 @@ function Item({ todo, update, remove }) {
       direction="row"
       gap="medium"
     >
-      <CheckBox
-        checked={todo.completed}
-        onChange={() => update(todo.id, { completed: !todo.completed })}
-      />
+      <CheckBox checked={todo.completed} onChange={() => update(todo.id, { completed: !todo.completed })} />
 
       <Box gap="xxsmall">
         <Text
           style={
             todo.completed
               ? {
-                  textDecorationLine: 'line-through',
-                  fontStyle: 'italic',
-                  fontWeight: 'bolder',
-                }
+                textDecorationLine: 'line-through',
+                fontStyle: 'italic',
+                fontWeight: 'bolder',
+              }
               : {}
           }
         >

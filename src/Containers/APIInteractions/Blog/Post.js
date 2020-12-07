@@ -29,15 +29,12 @@ function Post({ post, handleOnClick, addComment }) {
   const [commentText, setCommentText] = useState('');
 
   const insertCommentIntoPost = () => {
-    Axios.post(
-      `https://jsonplaceholder.typicode.com/posts/${post.id}/comments`,
-      {
-        postId: post.id,
-        name: 'This is just a test',
-        email: 'test@gmail.com',
-        body: commentText,
-      }
-    )
+    Axios.post(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`, {
+      postId: post.id,
+      name: 'This is just a test',
+      email: 'test@gmail.com',
+      body: commentText,
+    })
       .then((result) => {
         addComment({
           ...result.data,
@@ -81,17 +78,10 @@ function Post({ post, handleOnClick, addComment }) {
       </Box>
 
       {open && (
-        <Box
-          background="light-1"
-          pad="xsmall"
-          margin={{ left: 'large' }}
-          round="small"
-        >
-          {post.comments &&
-            post.comments.map &&
-            post.comments.map((comment) => {
-              return <Comment key={comment.id} comment={comment} />;
-            })}
+        <Box background="light-1" pad="xsmall" margin={{ left: 'large' }} round="small">
+          {post.comments
+            && post.comments.map
+            && post.comments.map((comment) => <Comment key={comment.id} comment={comment} />)}
 
           <TextInput
             placeholder="Add a comment..."

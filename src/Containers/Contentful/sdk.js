@@ -11,6 +11,98 @@ export const client = contentful.createClient({
   accessToken: ACCESS_TOKEN,
 });
 
+export function dataTransformer(data) {
+  return data.map(({ fields, sys }) => ({
+    ...fields,
+    id: sys.id,
+    createdAt: sys.createdAt,
+    description: fields.description ? truncateString(fields.description, 500) : null,
+  }));
+}
+
+export function entryTransformer({ fields, sys }) {
+  return {
+    ...fields,
+    id: sys.id,
+    createdAt: sys.createdAt,
+    description: fields.description ? truncateString(fields.description, 500) : null,
+    image: fields.image
+      ? {
+        ...fields.image.fields,
+        id: fields.image.sys.id,
+      }
+      : { file: {} },
+    ...(fields.tracklist
+      ? {
+        tracklist: fields.tracklist.map((track) => ({
+          ...track.fields,
+          id: track.sys.id,
+        })),
+      }
+      : {}),
+    ...(fields.cast
+      ? {
+        cast: fields.cast.map((actor) => ({
+          ...actor.fields,
+          id: actor.sys.id,
+        })),
+      }
+      : {}),
+  };
+}
+
+export function coursesTransformer(courses) {
+  return dataTransformer(courses).map((item) => ({
+    ...item,
+    image: item.image
+      ? {
+        ...item.image.fields,
+        id: item.image.sys.id,
+      }
+      : { file: {} },
+  }));
+}
+
+export function recordsTransformer(records) {
+  return dataTransformer(records).map((item) => ({
+    ...item,
+    url: item.listenUrl,
+    shortDescription: truncateString(item.description, 100),
+    image: item.image
+      ? {
+        ...item.image.fields,
+        id: item.image.sys.id,
+      }
+      : { file: {} },
+    tracklist:
+      item.tracklist && item.tracklist.map
+        ? item.tracklist.map((track) => ({
+          ...track.fields,
+          id: track.sys.id,
+        }))
+        : [],
+  }));
+}
+
+export function moviesTransformer(movies) {
+  return dataTransformer(movies).map((item) => ({
+    ...item,
+    image: item.poster
+      ? {
+        ...item.poster.fields,
+        id: item.poster.sys.id,
+      }
+      : { file: {} },
+    cast:
+      item.cast && item.cast.map
+        ? item.cast.map((actor) => ({
+          ...actor.fields,
+          id: actor.sys.id,
+        }))
+        : [],
+  }));
+}
+
 export async function getEntries(query) {
   try {
     const entries = await client.getEntries(query);
@@ -38,88 +130,4 @@ export async function getEntry(entryId) {
     console.error(error);
     return {};
   }
-}
-
-export function coursesTransformer(courses) {
-  return dataTransformer(courses).map((item) => ({
-    ...item,
-    image: {
-      ...item.image.fields,
-      id: item.image.sys.id,
-    },
-  }));
-}
-
-export function recordsTransformer(records) {
-  return dataTransformer(records).map((item) => ({
-    ...item,
-    url: item.listenUrl,
-    shortDescription: truncateString(item.description, 100),
-    image: {
-      ...item.image.fields,
-      id: item.image.sys.id,
-    },
-    tracklist: item.tracklist.map((track) => ({
-      ...track.fields,
-      id: track.sys.id,
-    })),
-  }));
-}
-
-export function moviesTransformer(movies) {
-  return dataTransformer(movies).map((item) => ({
-    ...item,
-    image: {
-      ...item.poster.fields,
-      id: item.poster.sys.id,
-    },
-    cast: item.cast.map((actor) => ({
-      ...actor.fields,
-      id: actor.sys.id,
-    })),
-  }));
-}
-
-export function dataTransformer(data) {
-  return data.map(({ fields, sys }) => ({
-    ...fields,
-    id: sys.id,
-    createdAt: sys.createdAt,
-    description: fields.description
-      ? truncateString(fields.description, 500)
-      : null,
-  }));
-}
-
-export function entryTransformer({ fields, sys }) {
-  return {
-    ...fields,
-    id: sys.id,
-    createdAt: sys.createdAt,
-    description: fields.description
-      ? truncateString(fields.description, 500)
-      : null,
-    image: fields.image
-      ? {
-          ...fields.image.fields,
-          id: fields.image.sys.id,
-        }
-      : {},
-    ...(fields.tracklist
-      ? {
-          tracklist: fields.tracklist.map((track) => ({
-            ...track.fields,
-            id: track.sys.id,
-          })),
-        }
-      : {}),
-    ...(fields.cast
-      ? {
-          cast: fields.cast.map((actor) => ({
-            ...actor.fields,
-            id: actor.sys.id,
-          })),
-        }
-      : {}),
-  };
 }

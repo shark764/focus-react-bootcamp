@@ -11,9 +11,7 @@ function Posts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    Axios.get(
-      `https://jsonplaceholder.typicode.com/users/${selectedUser.id}/posts`
-    )
+    Axios.get(`https://jsonplaceholder.typicode.com/users/${selectedUser.id}/posts`)
       .then((result) => {
         setPosts(result.data);
       })
@@ -25,17 +23,15 @@ function Posts() {
   const fetchComments = (id) => {
     Axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
       .then((result) => {
-        setPosts((currentPosts) =>
-          currentPosts.map((post) => {
-            if (post.id === id) {
-              return {
-                ...post,
-                comments: result.data,
-              };
-            }
-            return post;
-          })
-        );
+        setPosts((currentPosts) => currentPosts.map((post) => {
+          if (post.id === id) {
+            return {
+              ...post,
+              comments: result.data,
+            };
+          }
+          return post;
+        }));
       })
       .catch((err) => {
         console.error(err);
@@ -43,45 +39,37 @@ function Posts() {
   };
 
   const addComment = (comment) => {
-    setPosts((currentPosts) =>
-      currentPosts.map((post) => {
-        if (post.id === comment.postId) {
-          return {
-            ...post,
-            comments: [
-              ...post.comments,
-              {
-                ...comment,
-                id: Math.floor(Math.random() * 100000),
-              },
-            ],
-          };
-        }
-        return post;
-      })
-    );
+    setPosts((currentPosts) => currentPosts.map((post) => {
+      if (post.id === comment.postId) {
+        return {
+          ...post,
+          comments: [
+            ...post.comments,
+            {
+              ...comment,
+              id: Math.floor(Math.random() * 100000),
+            },
+          ],
+        };
+      }
+      return post;
+    }));
   };
 
   return (
     <Box gridArea="main1" background="light-1" pad="xsmall">
       <Heading level="3" margin="none" color="dark-1">
-        Hey look!, Here's a list of posts from{' '}
+        Hey look!, Here&#39;s a list of posts from
+        {' '}
         <Text color="brand" weight="bold" size="8">
           {selectedUser.name}
         </Text>
       </Heading>
 
       <Box pad="xsmall">
-        {posts.map((post) => {
-          return (
-            <Post
-              key={post.id}
-              post={post}
-              handleOnClick={fetchComments}
-              addComment={addComment}
-            />
-          );
-        })}
+        {posts.map((post) => (
+          <Post key={post.id} post={post} handleOnClick={fetchComments} addComment={addComment} />
+        ))}
       </Box>
     </Box>
   );

@@ -1,5 +1,7 @@
 import Axios from 'axios';
-import { Box, DataTable, Heading, Text } from 'grommet';
+import {
+  Box, DataTable, Heading, Text,
+} from 'grommet';
 import { StatusDisabled, StatusGood } from 'grommet-icons';
 import React, { useEffect, useState } from 'react';
 import Spinner from '../../Components/Grommet/Spinner';
@@ -15,9 +17,7 @@ function Products() {
       setLoading(true);
 
       try {
-        const { data } = await Axios.get(
-          `https://gorest.co.in/public-api/products`
-        );
+        const { data } = await Axios.get('https://gorest.co.in/public-api/products');
         setProducts(data.data);
       } catch (error) {
         setError(true);
@@ -28,9 +28,7 @@ function Products() {
     fetchProducts();
 
     return () => {
-      console.log(
-        "Goodbye, I'm going to clean up. Say goodbye to your data :("
-      );
+      console.log("Goodbye, I'm going to clean up. Say goodbye to your data :(");
     };
   }, []);
 
@@ -81,24 +79,31 @@ function Products() {
             {
               property: 'price',
               header: <Text>Price</Text>,
-              render: (datum) => <Text size="small">$ {datum.price}</Text>,
+              render: (datum) => (
+                <Text size="small">
+                  $
+                  {datum.price}
+                </Text>
+              ),
             },
             {
               property: 'discount_amount',
               header: <Text>Discount Amount</Text>,
               render: (datum) => (
-                <Text size="small">$ {datum.discount_amount}</Text>
+                <Text size="small">
+                  $
+                  {datum.discount_amount}
+                </Text>
               ),
             },
             {
               property: 'status',
               header: <Text>Status</Text>,
-              render: (datum) =>
-                datum.status ? (
-                  <StatusGood color="brand" size="medium" />
-                ) : (
-                  <StatusDisabled color="default" size="medium" />
-                ),
+              render: (datum) => (datum.status ? (
+                <StatusGood color="brand" size="medium" />
+              ) : (
+                <StatusDisabled color="default" size="medium" />
+              )),
             },
           ]}
           data={products}

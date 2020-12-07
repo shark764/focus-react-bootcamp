@@ -2,7 +2,7 @@ import React, { useState, createContext } from 'react';
 
 export const BlogContext = createContext();
 
-function BlogProvider(props) {
+function BlogProvider({ children }) {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
@@ -13,7 +13,7 @@ function BlogProvider(props) {
         selectedUser: [selectedUser, setSelectedUser],
       }}
     >
-      {props.children}
+      {children}
     </BlogContext.Provider>
   );
 }

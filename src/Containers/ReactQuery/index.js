@@ -11,11 +11,7 @@ function ReactQuery() {
       <Tab title="REST Products (useEffect)" margin="medium" icon={<Reactjs />}>
         <Products />
       </Tab>
-      <Tab
-        title="REST Products (React-Query)"
-        margin="medium"
-        icon={<GraphQl />}
-      >
+      <Tab title="REST Products (React-Query)" margin="medium" icon={<GraphQl />}>
         <Products2 />
       </Tab>
       <Tab title="REST Users (React-Query)" margin="medium" icon={<GraphQl />}>

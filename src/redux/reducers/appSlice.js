@@ -17,22 +17,20 @@ const appSlice = createSlice({
     },
 
     updateUser: (state, action) => {
-      let profile = state.profiles.find(
-        (profile) => profile.id === action.payload.id
-      );
+      let profile = state.profiles.find((pf) => pf.id === action.payload.id);
       if (profile) {
         profile = { ...profile, ...action.payload.data };
       }
     },
 
     removeUser: (state, action) => {
-      const index = state.profiles.findIndex(
-        (profile) => profile.id === action.payload
-      );
+      const index = state.profiles.findIndex((profile) => profile.id === action.payload);
       state.profiles.splice(index, 1);
     },
   },
 });
 
-export const { setData, addUser, updateUser, removeUser } = appSlice.actions;
+export const {
+  setData, addUser, updateUser, removeUser,
+} = appSlice.actions;
 export default appSlice;

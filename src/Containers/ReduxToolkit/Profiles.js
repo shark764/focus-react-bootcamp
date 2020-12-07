@@ -4,7 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Profile from './Profile';
 import SidebarLayer from './SidebarLayer';
-import { fetchData, onCreate, onRemove, onUpdate } from './thunks';
+import {
+  fetchData, onCreate, onRemove, onUpdate,
+} from './thunks';
 import { setData } from '../../redux/reducers/appSlice';
 
 function Profiles() {
@@ -48,30 +50,20 @@ function Profiles() {
       <Box align="start">
         <Button
           icon={<Apps size="large" />}
-          hoverIndicator={true}
+          hoverIndicator
           onClick={() => setOpenSidebar((isOpen) => !isOpen)}
           margin="medium"
         />
       </Box>
 
       <Box pad="xsmall" direction="row-responsive" gap="medium" wrap>
-        {profiles.map((profile) => {
-          return (
-            <Profile
-              key={profile.id}
-              profile={profile}
-              onRemove={handleRemove}
-            />
-          );
-        })}
+        {profiles.map((profile) => (
+          <Profile key={profile.id} profile={profile} onRemove={handleRemove} />
+        ))}
       </Box>
 
       {openSidebar && (
-        <SidebarLayer
-          onClose={() => setOpenSidebar(false)}
-          handleCreate={handleCreate}
-          handleUpdate={handleUpdate}
-        />
+        <SidebarLayer onClose={() => setOpenSidebar(false)} handleCreate={handleCreate} handleUpdate={handleUpdate} />
       )}
     </Grid>
   );

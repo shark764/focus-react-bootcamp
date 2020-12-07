@@ -1,14 +1,11 @@
 import Axios from 'axios';
-import React, { useState, useCallback, useEffect, useContext } from 'react';
+import React, {
+  useState, useCallback, useEffect, useContext,
+} from 'react';
 import BaseList from '../Components/BaseList';
 import { SearchContext } from '../Context/SearchContext';
 import {
-  ACCESS_TOKEN,
-  BASE_URL,
-  ENVIRONMENT,
-  SPACE_ID,
-  coursesTransformer,
-  getEntries,
+  ACCESS_TOKEN, BASE_URL, ENVIRONMENT, SPACE_ID, coursesTransformer, getEntries,
 } from '../sdk';
 
 const contentType = 'course';
@@ -29,11 +26,7 @@ function Courses() {
       'fields.title[match]': searchString,
     });
 
-    console.log(
-      `%cCourses fetched using... "${searchString}":`,
-      'background: #ccc; color: #444;',
-      entries
-    );
+    console.log(`%cCourses fetched using... "${searchString}":`, 'background: #ccc; color: #444;', entries);
 
     setCourses(entries);
   }, [searchString]);

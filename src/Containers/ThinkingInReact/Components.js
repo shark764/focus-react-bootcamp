@@ -1,4 +1,6 @@
-import { CheckBox, DataTable, Form, FormField, Text, TextInput } from 'grommet';
+import {
+  CheckBox, DataTable, Form, FormField, Text, TextInput,
+} from 'grommet';
 import React, { useContext, useState } from 'react';
 import { ProductContext } from './Context';
 import { PRODUCTS } from './data';
@@ -10,28 +12,15 @@ export function ProductTable() {
     <DataTable
       background={['light-2', 'default']}
       columns={[
-        {
-          property: 'category',
-          header: 'Category',
-          search: true,
-        },
+        { property: 'category', header: 'Category', search: true },
         {
           property: 'name',
           header: 'Name',
           primary: true,
           search: true,
-          render: (product) =>
-            product.stocked ? (
-              product.name
-            ) : (
-              <Text color="secondary">{product.name}</Text>
-            ),
+          render: (product) => (product.stocked ? product.name : <Text color="secondary">{product.name}</Text>),
         },
-        {
-          property: 'price',
-          header: 'Price',
-          search: true,
-        },
+        { property: 'price', header: 'Price', search: true },
       ]}
       data={products}
       resizeable
@@ -44,16 +33,6 @@ export function SearchBar() {
   const [search, setSearch] = useState('');
   const [checked, setChecked] = useState(false);
 
-  const handleSearch = (query) => {
-    setSearch(query);
-    filter({ search: query, checked });
-  };
-
-  const handleChange = (chk = false) => {
-    setChecked(chk);
-    filter({ search, checked: chk });
-  };
-
   const filter = (criteria) => {
     const results = PRODUCTS.filter((product) => {
       const rs = product.name.toLowerCase().includes(criteria.search);
@@ -65,19 +44,26 @@ export function SearchBar() {
     setProducts(results);
   };
 
+  const handleSearch = (query) => {
+    setSearch(query);
+    filter({ search: query, checked });
+  };
+
+  const handleChange = (chk = false) => {
+    setChecked(chk);
+    filter({ search, checked: chk });
+  };
+
   return (
     <Form>
       <FormField>
-        <TextInput
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
+        <TextInput placeholder="Search..." value={search} onChange={(e) => handleSearch(e.target.value)} />
       </FormField>
       <FormField>
         <CheckBox
           label="Only show products in stock"
-          onChange={(e) => handleChange(e.target.checked)}
+          checked={checked}
+          onChange={(event) => handleChange(event.target.checked)}
           toggle
         />
       </FormField>

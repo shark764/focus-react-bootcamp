@@ -13,12 +13,12 @@
     "grommet": "^2.15.2",
     "grommet-icons": "^4.5.0",
     "luxon": "^1.25.0",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.9.6",
     "react-json-pretty": "^2.2.0",
-    "react-query": "^2.26.3",
-    "react-query-devtools": "^2.6.3",
+    "react-query": "^3.5.9",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
@@ -29,8 +29,12 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:fix": "react-scripts build && echo '/* /index.html 200' | cat >build/_redirects ",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|html)\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,7 +52,23 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.1.0",
-    "prop-types": "^15.7.2"
+    "husky": "^2.4.1",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx|json|css|html)": "prettier --write",
+    "*.js": "eslint --cache --fix"
   }
 }

@@ -1,13 +1,5 @@
 import {
-  Box,
-  Button,
-  CheckBox,
-  Form,
-  FormField,
-  Heading,
-  MaskedInput,
-  RadioButtonGroup,
-  TextInput,
+  Box, Button, CheckBox, Form, FormField, Heading, MaskedInput, RadioButtonGroup, TextInput,
 } from 'grommet';
 import { Close, UserAdd } from 'grommet-icons';
 import React from 'react';
@@ -21,7 +13,9 @@ function FormUser({ onSubmit, onClose }) {
       >
         <Box flex={false} direction="row" justify="between">
           <Heading level={3} margin="none">
-            <UserAdd size="medium" color="harmonie-3" /> Add User
+            <UserAdd size="medium" color="harmonie-3" />
+            {' '}
+            Add User
           </Heading>
           <Button icon={<Close />} onClick={onClose} />
         </Box>
@@ -53,13 +47,7 @@ function FormUser({ onSubmit, onClose }) {
           </FormField>
         </Box>
 
-        <Box
-          flex={false}
-          as="footer"
-          align="start"
-          direction="row"
-          gap="medium"
-        >
+        <Box flex={false} as="footer" align="start" direction="row" gap="medium">
           <Button type="submit" primary label="Submit" />
           <Button type="reset" label="Reset" />
         </Box>

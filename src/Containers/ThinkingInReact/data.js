@@ -90,3 +90,5 @@ export const PRODUCTS = [
     name: 'Sherlock Holmes',
   },
 ];
+
+export default PRODUCTS;

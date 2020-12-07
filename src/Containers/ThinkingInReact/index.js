@@ -5,11 +5,7 @@ import ProductProvider from './Context';
 
 function ThinkingInReact() {
   return (
-    <Box
-      background="light-1"
-      border={{ color: 'brand', size: 'large' }}
-      pad="medium"
-    >
+    <Box background="light-1" border={{ color: 'brand', size: 'large' }} pad="medium">
       <ProductProvider>
         <SearchBar />
         <ProductTable />

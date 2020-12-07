@@ -1,4 +1,6 @@
-import { Box, Button, Heading, Text } from 'grommet';
+import {
+  Box, Button, Heading, Text,
+} from 'grommet';
 import { Refresh } from 'grommet-icons';
 import React from 'react';
 
@@ -7,7 +9,9 @@ function parse(str) {
   return Function(`'use strict'; return (${str})`)();
 }
 
-function CalcPropExample({ num1, num2, op, clear }) {
+function CalcPropExample({
+  num1, num2, op, clear,
+}) {
   let result;
   try {
     result = parse(`${num1}${op}${num2}`);
@@ -21,13 +25,7 @@ function CalcPropExample({ num1, num2, op, clear }) {
       <Heading level="1" margin="none" color="controls">
         {result}
       </Heading>
-      <Button
-        type="button"
-        color="defult"
-        icon={<Refresh />}
-        onClick={clear}
-        label="Clear?"
-      />
+      <Button type="button" color="defult" icon={<Refresh />} onClick={clear} label="Clear?" />
     </Box>
   );
 }

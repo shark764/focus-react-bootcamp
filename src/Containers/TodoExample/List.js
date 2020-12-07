@@ -1,47 +1,43 @@
 import React, { useContext } from 'react';
 import { DateTime } from 'luxon';
+import { Box, Grid } from 'grommet';
 import { TodosContext } from './Context';
 import Item, { Category } from './Item';
-import { Box, Grid } from 'grommet';
 
-const categories = [
-  'Past',
-  'Today',
-  'Tomorrow',
-  'This Week',
-  'Next Week',
-  'Upcoming',
-  'Next Month',
-  'Someday',
-];
+const categories = ['Past', 'Today', 'Tomorrow', 'This Week', 'Next Week', 'Upcoming', 'Next Month', 'Someday'];
 
-function getCategory({ months, weeks, days, hours }) {
+function getCategory({
+  months, weeks, days, hours,
+}) {
   if (months >= 2) {
     return 'Someday';
-  } else if (months >= 1) {
-    return 'Next Month';
-  } else if (weeks > 2) {
-    return 'Upcoming';
-  } else if (weeks > 1) {
-    return 'Next Week';
-  } else if (days >= 2) {
-    return 'This Week';
-  } else if (days >= 1) {
-    return 'Tomorrow';
-  } else if (days >= 0) {
-    return 'Today';
-  } else {
-    return 'Past';
   }
+  if (months >= 1) {
+    return 'Next Month';
+  }
+  if (weeks > 2) {
+    return 'Upcoming';
+  }
+  if (weeks > 1) {
+    return 'Next Week';
+  }
+  if (days >= 2) {
+    return 'This Week';
+  }
+  if (days >= 1) {
+    return 'Tomorrow';
+  }
+  if (days >= 0) {
+    return 'Today';
+  }
+  return 'Past';
 }
 
 function List() {
   const [todos, setTodos] = useContext(TodosContext);
 
   const list = todos.map((todo) => {
-    const diff = DateTime.fromISO(todo.dateTo)
-      .diff(DateTime.local(), ['months', 'weeks', 'days', 'hours'])
-      .toObject();
+    const diff = DateTime.fromISO(todo.dateTo).diff(DateTime.local(), ['months', 'weeks', 'days', 'hours']).toObject();
     const category = getCategory(diff);
 
     return {
@@ -51,9 +47,7 @@ function List() {
   });
 
   const remove = (id) => {
-    const updatedData = todos.filter((todo) => {
-      return todo.id !== id;
-    });
+    const updatedData = todos.filter((todo) => todo.id !== id);
     setTodos(updatedData);
   };
 
@@ -81,9 +75,7 @@ function List() {
           /**
            * Getting items in category
            */
-          const items = list.filter((item) => {
-            return item.category === category;
-          });
+          const items = list.filter((item) => item.category === category);
 
           /**
            * No items found
@@ -98,16 +90,9 @@ function List() {
           return (
             <Box gap="xsmall" margin="small" key={category}>
               <Category category={category} />
-              {items.map((item) => {
-                return (
-                  <Item
-                    key={item.id}
-                    todo={item}
-                    update={update}
-                    remove={remove}
-                  />
-                );
-              })}
+              {items.map((item) => (
+                <Item key={item.id} todo={item} update={update} remove={remove} />
+              ))}
             </Box>
           );
         })}

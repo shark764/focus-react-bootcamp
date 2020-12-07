@@ -24,3 +24,5 @@ export const TODOS = [
     completed: false,
   },
 ];
+
+export default TODOS;

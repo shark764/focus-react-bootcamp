@@ -29,11 +29,9 @@ class ClassWithLifeCycleExample extends Component {
     console.log('I just mounted');
 
     this.interval = setInterval(() => {
-      this.setState((state) => {
-        return {
-          visits: state.visits + 1,
-        };
-      });
+      this.setState((state) => ({
+        visits: state.visits + 1,
+      }));
     }, 3000);
   }
 
@@ -56,10 +54,15 @@ class ClassWithLifeCycleExample extends Component {
     /**
      * We construct here the portion of the html that will be rendered
      */
+    const { text, visits } = this.state;
+
     return (
       <div className="App-example">
-        <p>{this.state.text}</p>
-        <span>Visits: {this.state.visits}</span>
+        <p>{text}</p>
+        <span>
+          Visits:
+          {visits}
+        </span>
       </div>
     );
   }

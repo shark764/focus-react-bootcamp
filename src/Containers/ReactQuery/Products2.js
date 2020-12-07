@@ -1,5 +1,7 @@
 import Axios from 'axios';
-import { Box, DataTable, Heading, Text } from 'grommet';
+import {
+  Box, DataTable, Heading, Text,
+} from 'grommet';
 import { StatusDisabled, StatusGood } from 'grommet-icons';
 import React from 'react';
 import { useQuery } from 'react-query';
@@ -13,9 +15,7 @@ function Products2() {
     error: queryError,
     data: products,
   } = useQuery('fetchProducts', async () => {
-    const { data } = await Axios.get(
-      `https://gorest.co.in/public-api/products`
-    );
+    const { data } = await Axios.get('https://gorest.co.in/public-api/products');
     return data.data;
   });
 
@@ -66,24 +66,31 @@ function Products2() {
             {
               property: 'price',
               header: <Text>Price</Text>,
-              render: (datum) => <Text size="small">$ {datum.price}</Text>,
+              render: (datum) => (
+                <Text size="small">
+                  $
+                  {datum.price}
+                </Text>
+              ),
             },
             {
               property: 'discount_amount',
               header: <Text>Discount Amount</Text>,
               render: (datum) => (
-                <Text size="small">$ {datum.discount_amount}</Text>
+                <Text size="small">
+                  $
+                  {datum.discount_amount}
+                </Text>
               ),
             },
             {
               property: 'status',
               header: <Text>Status</Text>,
-              render: (datum) =>
-                datum.status ? (
-                  <StatusGood color="brand" size="medium" />
-                ) : (
-                  <StatusDisabled color="default" size="medium" />
-                ),
+              render: (datum) => (datum.status ? (
+                <StatusGood color="brand" size="medium" />
+              ) : (
+                <StatusDisabled color="default" size="medium" />
+              )),
             },
           ]}
           data={products}

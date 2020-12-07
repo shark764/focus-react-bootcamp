@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Beacon,
   CloudSoftware,
   Code,
   Connect,
@@ -63,4 +64,11 @@ export const routes = [
     icon: <CloudSoftware color="light-1" />,
     text: 'Contentful',
   },
+  {
+    to: '/custom-hook',
+    icon: <Beacon color="light-1" />,
+    text: 'Custom Hook Example',
+  },
 ];
+
+export default routes;

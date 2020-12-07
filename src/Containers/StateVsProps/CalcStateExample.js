@@ -1,4 +1,6 @@
-import { Box, Button, Heading, TextInput } from 'grommet';
+import {
+  Box, Button, Heading, TextInput,
+} from 'grommet';
 import React, { useState } from 'react';
 import CalcPropExample from './CalcPropExample';
 
@@ -20,29 +22,11 @@ function CalcStateExample() {
       </Heading>
 
       <Box pad="xsmall" direction="row">
-        <TextInput
-          type="number"
-          placeholder="first numer"
-          value={num1}
-          onChange={(e) => setNum1(e.target.value)}
-        />
-        <TextInput
-          type="number"
-          placeholder="second numer"
-          value={num2}
-          onChange={(e) => setNum2(e.target.value)}
-        />
-        {['+', '-', '/', '*', '%', '**'].map((opType) => {
-          return (
-            <Button
-              key={opType}
-              type="button"
-              onClick={() => setOp(opType)}
-              active={op === opType}
-              label={opType}
-            />
-          );
-        })}
+        <TextInput type="number" placeholder="first numer" value={num1} onChange={(e) => setNum1(e.target.value)} />
+        <TextInput type="number" placeholder="second numer" value={num2} onChange={(e) => setNum2(e.target.value)} />
+        {['+', '-', '/', '*', '%', '**'].map((opType) => (
+          <Button key={opType} type="button" onClick={() => setOp(opType)} active={op === opType} label={opType} />
+        ))}
       </Box>
 
       <CalcPropExample num1={num1} num2={num2} op={op} clear={clear} />

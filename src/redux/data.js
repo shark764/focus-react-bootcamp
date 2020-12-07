@@ -120,3 +120,5 @@ export const employees = [
     emailAddress: 'john.frusciante@learningcontainer.com',
   },
 ];
+
+export default employees;

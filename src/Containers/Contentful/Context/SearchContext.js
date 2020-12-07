@@ -3,14 +3,10 @@ import PropTypes from 'prop-types';
 
 export const SearchContext = createContext();
 
-const SearchProvider = (props) => {
+const SearchProvider = ({ children }) => {
   const [searchString, setSearchString] = useState('');
 
-  return (
-    <SearchContext.Provider value={[searchString, setSearchString]}>
-      {props.children}
-    </SearchContext.Provider>
-  );
+  return <SearchContext.Provider value={[searchString, setSearchString]}>{children}</SearchContext.Provider>;
 };
 
 SearchProvider.propTypes = {

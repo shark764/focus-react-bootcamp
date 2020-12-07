@@ -6,11 +6,7 @@ import NavBar from './NavBar';
 
 function TodoExample() {
   return (
-    <Box
-      background="light-1"
-      border={{ color: 'brand', size: 'large' }}
-      pad="medium"
-    >
+    <Box background="light-1" border={{ color: 'brand', size: 'large' }} pad="medium">
       <TodosProvider>
         <NavBar />
         <List />

@@ -13,12 +13,7 @@ function Country({ country }) {
       gap="small"
     >
       <Box height="xxsmall">
-        <Image
-          fit="contain"
-          src={country.flag}
-          alt={`${country.demonym} flag`}
-          height="30"
-        />
+        <Image fit="contain" src={country.flag} alt={`${country.demonym} flag`} height="30" />
       </Box>
       <List
         primaryKey="key"
