@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Collapsible,
-  Grommet,
-  Heading,
-  Layer,
-  ResponsiveContext,
-} from 'grommet';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Box, Button, Collapsible, Grommet, Heading, Layer, ResponsiveContext } from 'grommet';
+import { HashRouter } from 'react-router-dom';
 import { Apps, FormClose } from 'grommet-icons';
 import { ReactQueryDevtools } from 'react-query-devtools';
 import Routing from './Components/Routing';
@@ -63,24 +55,11 @@ const AppBar = (props) => (
 );
 
 function App() {
-  console.log(
-    '%c //s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80',
-    'background: lightgreen; color: gray;'
-  );
-  console.log(
-    '%c Use breaking bad characters avatar',
-    'background: cyan; color: darkblue;'
-  );
-  console.log(
-    '%c https://vinicius73.github.io/gravatar-url-generator/#/',
-    'background: lightblue; color: darkred;'
-  );
-
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <>
-      <Router>
+      <HashRouter>
         <Grommet theme={theme} full>
           <ResponsiveContext.Consumer>
             {(size) => (
@@ -92,10 +71,7 @@ function App() {
 
                   <NavBar />
 
-                  <Button
-                    icon={<Apps />}
-                    onClick={() => setShowSidebar(!showSidebar)}
-                  />
+                  <Button icon={<Apps />} onClick={() => setShowSidebar(!showSidebar)} />
                 </AppBar>
 
                 <Box direction="row" flex overflow={{ horizontal: 'hidden' }}>
@@ -119,24 +95,10 @@ function App() {
                     </Collapsible>
                   ) : (
                     <Layer>
-                      <Box
-                        background="light-2"
-                        tag="header"
-                        justify="end"
-                        align="center"
-                        direction="row"
-                      >
-                        <Button
-                          icon={<FormClose />}
-                          onClick={() => setShowSidebar(false)}
-                        />
+                      <Box background="light-2" tag="header" justify="end" align="center" direction="row">
+                        <Button icon={<FormClose />} onClick={() => setShowSidebar(false)} />
                       </Box>
-                      <Box
-                        fill
-                        background="default"
-                        align="center"
-                        justify="center"
-                      >
+                      <Box fill background="default" align="center" justify="center">
                         <Menu />
                       </Box>
                     </Layer>
@@ -146,7 +108,7 @@ function App() {
             )}
           </ResponsiveContext.Consumer>
         </Grommet>
-      </Router>
+      </HashRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </>
   );

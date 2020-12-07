@@ -19,9 +19,7 @@ function Users() {
     error: queryError,
     data: users,
   } = useQuery('fetchUsers', async () => {
-    const { data } = await Axios.get(
-      `https://gorest.co.in/public-api/users?page=70`
-    );
+    const { data } = await Axios.get(`https://gorest.co.in/public-api/users?page=70`);
     return data.data;
   });
 
@@ -41,13 +39,13 @@ function Users() {
         console.log('User created successfully');
         console.info(
           '%c Invalidating cache. React-Query will refetch data again to sincronize with server.',
-          'background: #222; color: #bada55'
+          'background: #222; color: #bada55',
         );
       },
       onError: (error) => {
         console.error(error);
       },
-    }
+    },
   );
 
   const onOpen = () => setOpen(true);
@@ -135,22 +133,14 @@ function Users() {
                 property: 'created_at',
                 header: <Text>Created At</Text>,
                 render: (datum) => (
-                  <Text size="small">
-                    {DateTime.fromISO(datum.created_at).toLocaleString(
-                      DateTime.DATETIME_MED
-                    )}
-                  </Text>
+                  <Text size="small">{DateTime.fromISO(datum.created_at).toLocaleString(DateTime.DATETIME_MED)}</Text>
                 ),
               },
               {
                 property: 'updated_at',
                 header: <Text>Updated At</Text>,
                 render: (datum) => (
-                  <Text size="small">
-                    {DateTime.fromISO(datum.updated_at).toLocaleString(
-                      DateTime.DATETIME_MED
-                    )}
-                  </Text>
+                  <Text size="small">{DateTime.fromISO(datum.updated_at).toLocaleString(DateTime.DATETIME_MED)}</Text>
                 ),
               },
               {
@@ -170,17 +160,8 @@ function Users() {
       )}
 
       {open && (
-        <Layer
-          position="right"
-          full="vertical"
-          modal
-          onClickOutside={onClose}
-          onEsc={onClose}
-        >
-          <FormUser
-            onSubmit={({ value }) => onSubmit(value)}
-            onClose={onClose}
-          />
+        <Layer position="right" full="vertical" modal onClickOutside={onClose} onEsc={onClose}>
+          <FormUser onSubmit={({ value }) => onSubmit(value)} onClose={onClose} />
         </Layer>
       )}
     </>

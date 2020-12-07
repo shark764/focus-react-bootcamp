@@ -11,15 +11,11 @@ function Blog() {
       </Heading>
 
       <Heading level="5" margin="none" color="brand">
-        Using Axios for asynchronous HTTP requests and then/catch blocks
-        promises handler
+        Using Axios for asynchronous HTTP requests and then/catch blocks promises handler
       </Heading>
 
       <Heading level="6" margin="none" color="brand">
-        <Anchor
-          href="https://jsonplaceholder.typicode.com/"
-          label="https://jsonplaceholder.typicode.com/"
-        />
+        <Anchor href="https://jsonplaceholder.typicode.com/" label="https://jsonplaceholder.typicode.com/" />
       </Heading>
 
       <BlogProvider>

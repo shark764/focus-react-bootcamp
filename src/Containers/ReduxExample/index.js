@@ -17,13 +17,7 @@ function ReduxExample(props) {
       <Employees />
 
       {props.formIsOpen && (
-        <Layer
-          position="right"
-          full="vertical"
-          modal
-          onClickOutside={closeSideForm}
-          onEsc={closeSideForm}
-        >
+        <Layer position="right" full="vertical" modal onClickOutside={closeSideForm} onEsc={closeSideForm}>
           <FormLayout key={props.selectedEmployeeId} />
         </Layer>
       )}
@@ -39,9 +33,7 @@ ReduxExample.propTypes = {
 
 const mapStateToProps = (state) => ({
   formIsOpen: state.root.formIsOpen,
-  selectedEmployeeId: state.root.selectedEmployeeId
-    ? state.root.selectedEmployeeId
-    : 'none',
+  selectedEmployeeId: state.root.selectedEmployeeId ? state.root.selectedEmployeeId : 'none',
 });
 
 const actions = {

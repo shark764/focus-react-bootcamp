@@ -1,13 +1,5 @@
 import Axios from 'axios';
-import {
-  Box,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Grid,
-  Text,
-} from 'grommet';
+import { Box, Card, CardBody, CardFooter, CardHeader, Grid, Text } from 'grommet';
 import { User } from 'grommet-icons';
 import React, { useContext, useEffect } from 'react';
 import Albums from './Albums';
@@ -51,41 +43,45 @@ function Users() {
           </Box>
         </Grid>
       ) : (
-        users.map((user) => {
-          return (
-            <Box
-              align="stretch"
-              border={{ color: 'dark-1', size: 'xxsmall' }}
-              pad={{ vertical: 'small', horizontal: 'medium' }}
-              round="medium"
-              elevation="medium"
-              margin="xsmall"
-              direction="row"
-              gap="small"
-              key={user.id}
-              onClick={() => setSelectedUser(user)}
-            >
-              <Card height="small" background="light-3">
-                <CardHeader pad="small">
-                  <User color="plain" />
-                  <Text>{user.name}</Text>
-                </CardHeader>
-                <CardBody pad="small">
-                  <Text color="controls" weight="bold">
-                    Username
-                  </Text>
-                  <Text> {user.username}</Text>
-                </CardBody>
-                <CardFooter pad={{ horizontal: 'small' }} background="dark-2">
-                  <Text color="brand" weight="bold">
-                    Email
-                  </Text>
-                  <Text> {user.email}</Text>
-                </CardFooter>
-              </Card>
-            </Box>
-          );
-        })
+        users.map((user) => (
+          <Box
+            align="stretch"
+            border={{ color: 'dark-1', size: 'xxsmall' }}
+            pad={{ vertical: 'small', horizontal: 'medium' }}
+            round="medium"
+            elevation="medium"
+            margin="xsmall"
+            direction="row"
+            gap="small"
+            key={user.id}
+            onClick={() => setSelectedUser(user)}
+          >
+            <Card height="small" background="light-3">
+              <CardHeader pad="small">
+                <User color="plain" />
+                <Text>{user.name}</Text>
+              </CardHeader>
+              <CardBody pad="small">
+                <Text color="controls" weight="bold">
+                  Username
+                </Text>
+                <Text> 
+{' '}
+{user.username}
+                </Text>
+              </CardBody>
+              <CardFooter pad={{ horizontal: 'small' }} background="dark-2">
+                <Text color="brand" weight="bold">
+                  Email
+                </Text>
+                <Text> 
+{' '}
+{user.email}
+                </Text>
+              </CardFooter>
+            </Card>
+          </Box>
+        ))
       )}
     </Box>
   );

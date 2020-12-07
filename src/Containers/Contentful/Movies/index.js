@@ -13,11 +13,7 @@ function Movies() {
       'fields.title[match]': searchString,
     });
 
-    console.log(
-      `%cMovies fetched using... "${searchString}":`,
-      'background: #ccc; color: #444;',
-      entries
-    );
+    console.log(`%cMovies fetched using... "${searchString}":`, 'background: #ccc; color: #444;', entries);
 
     setMovies(entries);
   }, [searchString]);

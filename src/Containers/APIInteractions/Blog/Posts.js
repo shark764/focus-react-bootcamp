@@ -11,9 +11,7 @@ function Posts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    Axios.get(
-      `https://jsonplaceholder.typicode.com/users/${selectedUser.id}/posts`
-    )
+    Axios.get(`https://jsonplaceholder.typicode.com/users/${selectedUser.id}/posts`)
       .then((result) => {
         setPosts(result.data);
       })
@@ -34,7 +32,7 @@ function Posts() {
               };
             }
             return post;
-          })
+          }),
         );
       })
       .catch((err) => {
@@ -58,30 +56,24 @@ function Posts() {
           };
         }
         return post;
-      })
+      }),
     );
   };
 
   return (
     <Box gridArea="main1" background="light-1" pad="xsmall">
       <Heading level="3" margin="none" color="dark-1">
-        Hey look!, Here's a list of posts from{' '}
+        Hey look!, Here's a list of posts from
+{' '}
         <Text color="brand" weight="bold" size="8">
           {selectedUser.name}
         </Text>
       </Heading>
 
       <Box pad="xsmall">
-        {posts.map((post) => {
-          return (
-            <Post
-              key={post.id}
-              post={post}
-              handleOnClick={fetchComments}
-              addComment={addComment}
-            />
-          );
-        })}
+        {posts.map((post) => (
+          <Post key={post.id} post={post} handleOnClick={fetchComments} addComment={addComment} />
+        ))}
       </Box>
     </Box>
   );

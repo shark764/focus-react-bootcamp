@@ -85,9 +85,7 @@ export function dataTransformer(data) {
     ...fields,
     id: sys.id,
     createdAt: sys.createdAt,
-    description: fields.description
-      ? truncateString(fields.description, 500)
-      : null,
+    description: fields.description ? truncateString(fields.description, 500) : null,
   }));
 }
 
@@ -96,9 +94,7 @@ export function entryTransformer({ fields, sys }) {
     ...fields,
     id: sys.id,
     createdAt: sys.createdAt,
-    description: fields.description
-      ? truncateString(fields.description, 500)
-      : null,
+    description: fields.description ? truncateString(fields.description, 500) : null,
     image: fields.image
       ? {
           ...fields.image.fields,

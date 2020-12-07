@@ -20,12 +20,7 @@ export function ProductTable() {
           header: 'Name',
           primary: true,
           search: true,
-          render: (product) =>
-            product.stocked ? (
-              product.name
-            ) : (
-              <Text color="secondary">{product.name}</Text>
-            ),
+          render: (product) => (product.stocked ? product.name : <Text color="secondary">{product.name}</Text>),
         },
         {
           property: 'price',
@@ -68,18 +63,10 @@ export function SearchBar() {
   return (
     <Form>
       <FormField>
-        <TextInput
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
+        <TextInput placeholder="Search..." value={search} onChange={(e) => handleSearch(e.target.value)} />
       </FormField>
       <FormField>
-        <CheckBox
-          label="Only show products in stock"
-          onChange={(e) => handleChange(e.target.checked)}
-          toggle
-        />
+        <CheckBox label="Only show products in stock" onChange={(e) => handleChange(e.target.checked)} toggle />
       </FormField>
     </Form>
   );

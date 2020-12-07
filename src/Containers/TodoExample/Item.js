@@ -15,10 +15,7 @@ function Item({ todo, update, remove }) {
       direction="row"
       gap="medium"
     >
-      <CheckBox
-        checked={todo.completed}
-        onChange={() => update(todo.id, { completed: !todo.completed })}
-      />
+      <CheckBox checked={todo.completed} onChange={() => update(todo.id, { completed: !todo.completed })} />
 
       <Box gap="xxsmall">
         <Text

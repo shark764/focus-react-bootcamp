@@ -1,14 +1,5 @@
 import Axios from 'axios';
-import {
-  Anchor,
-  Box,
-  Form,
-  Grid,
-  Heading,
-  Select,
-  Text,
-  TextInput,
-} from 'grommet';
+import { Anchor, Box, Form, Grid, Heading, Select, Text, TextInput } from 'grommet';
 import React, { useCallback, useEffect, useState } from 'react';
 import Spinner from '../../../Components/Grommet/Spinner';
 import List from './List';
@@ -29,9 +20,7 @@ function Countries() {
     setIsLoading(true);
 
     try {
-      const response = await Axios.get(
-        `https://restcountries.eu/rest/v2/${searchFor}/${query}`
-      );
+      const response = await Axios.get(`https://restcountries.eu/rest/v2/${searchFor}/${query}`);
       setCountries(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -63,15 +52,11 @@ function Countries() {
       </Heading>
 
       <Heading level="5" margin="none" color="controls">
-        Using Axios for asynchronous HTTP requests and async/await promises
-        handler
+        Using Axios for asynchronous HTTP requests and async/await promises handler
       </Heading>
 
       <Heading level="6" margin="none" color="controls">
-        <Anchor
-          href="https://restcountries.eu/rest/v2/all"
-          label="https://restcountries.eu/rest/v2/all"
-        />
+        <Anchor href="https://restcountries.eu/rest/v2/all" label="https://restcountries.eu/rest/v2/all" />
       </Heading>
 
       {isError && <Text color="status-error">Something went wrong!...</Text>}
@@ -92,11 +77,7 @@ function Countries() {
               />
 
               {searchFor === 'name' && (
-                <TextInput
-                  placeholder="Search..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
+                <TextInput placeholder="Search..." value={query} onChange={(e) => setQuery(e.target.value)} />
               )}
 
               {searchFor === 'lang' && (

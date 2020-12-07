@@ -1,14 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Form,
-  FormField,
-  Layer,
-  Select,
-  Text,
-  TextInput,
-} from 'grommet';
+import { Avatar, Box, Button, Form, FormField, Layer, Select, Text, TextInput } from 'grommet';
 import { FormAdd, FormTrash, User } from 'grommet-icons';
 import React, { useState } from 'react';
 
@@ -30,20 +20,8 @@ function SidebarLayer({ onClose, handleCreate }) {
   };
 
   return (
-    <Layer
-      position="left"
-      full="vertical"
-      modal
-      onEsc={onClose}
-      onClickOutside={onClose}
-    >
-      <Box
-        background="harmonie-4"
-        overflow="auto"
-        fill="vertical"
-        width="medium"
-        pad="medium"
-      >
+    <Layer position="left" full="vertical" modal onEsc={onClose} onClickOutside={onClose}>
+      <Box background="harmonie-4" overflow="auto" fill="vertical" width="medium" pad="medium">
         <Box pad={{ vertical: 'medium' }}>
           <Text size="large">Profile manager</Text>
         </Box>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PropExample from './PropExample';
 import { Box, Button, Form, FormField, Grid, Heading, Select } from 'grommet';
+import PropExample from './PropExample';
 
 function StateExample() {
   const [animals, setAnimals] = useState([
@@ -13,18 +13,11 @@ function StateExample() {
   ]);
 
   const onSubmit = (values) => {
-    setAnimals((oldAnimals) => [
-      ...oldAnimals,
-      { id: Math.floor(Math.random() * 100000), ...values },
-    ]);
+    setAnimals((oldAnimals) => [...oldAnimals, { id: Math.floor(Math.random() * 100000), ...values }]);
   };
 
   const onRemove = (id) => {
-    setAnimals((oldAnimals) =>
-      oldAnimals.filter((animal) => {
-        return animal.id !== id;
-      })
-    );
+    setAnimals((oldAnimals) => oldAnimals.filter((animal) => animal.id !== id));
   };
 
   return (
@@ -34,15 +27,9 @@ function StateExample() {
       </Heading>
 
       <Box pad="xsmall" direction="row-responsive" gap="medium" wrap>
-        {animals.map((animal) => {
-          return (
-            <PropExample
-              key={animal.id.toString()}
-              animal={animal}
-              onRemove={onRemove}
-            />
-          );
-        })}
+        {animals.map((animal) => (
+          <PropExample key={animal.id.toString()} animal={animal} onRemove={onRemove} />
+        ))}
       </Box>
 
       <Heading color="light-1" level="4">
@@ -53,12 +40,7 @@ function StateExample() {
         <Box pad="none">
           <Form onSubmit={({ value }) => onSubmit(value)}>
             <Box direction="row" gap="medium">
-              <FormField
-                name="name"
-                label="Name"
-                placeholder="name..."
-                required
-              />
+              <FormField name="name" label="Name" placeholder="name..." required />
 
               <FormField
                 label="Group"

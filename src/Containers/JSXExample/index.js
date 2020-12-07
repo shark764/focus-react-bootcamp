@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Heading,
-  List,
-  Select,
-  Text,
-  TextInput,
-} from 'grommet';
+import { Box, Button, Grid, Heading, List, Select, Text, TextInput } from 'grommet';
 import React, { useState } from 'react';
 
 /**
@@ -79,29 +70,22 @@ function JSXExample() {
             Look, you can change the background color of the container
           </Heading>
           <div>
-            {colors.map((color) => {
-              return (
-                <Button
-                  key={color}
-                  type="button"
-                  size="small"
-                  margin="xsmall"
-                  onClick={(event) => setBackgroundColor(color)}
-                  label={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
-                  color={color}
-                />
-              );
-            })}
+            {colors.map((color) => (
+              <Button
+                key={color}
+                type="button"
+                size="small"
+                margin="xsmall"
+                onClick={(event) => setBackgroundColor(color)}
+                label={`${color.charAt(0).toUpperCase()}${color.slice(1)}`}
+                color={color}
+              />
+            ))}
           </div>
 
           <Box pad="medium" width="medium" background={backgroundColor}>
-            <Text
-              size="large"
-              color={backgroundColor === 'black' ? 'primary' : 'secondary'}
-            >
-              {`${backgroundColor
-                .charAt(0)
-                .toUpperCase()}${backgroundColor.slice(1)}`}
+            <Text size="large" color={backgroundColor === 'black' ? 'primary' : 'secondary'}>
+              {`${backgroundColor.charAt(0).toUpperCase()}${backgroundColor.slice(1)}`}
             </Text>
           </Box>
         </div>
@@ -111,8 +95,7 @@ function JSXExample() {
 
         <div>
           <Heading margin="none" color="controls" level="3">
-            Look, you can render different elements based on the color you
-            choose
+            Look, you can render different elements based on the color you choose
           </Heading>
           <Select
             name="choose-color"
@@ -122,17 +105,16 @@ function JSXExample() {
             options={colors}
             placeholder=" --- Select a color --- "
           />
-          You selected: <strong>{backgroundColor}</strong>
+          You selected: 
+{' '}
+<strong>{backgroundColor}</strong>
           {content}
         </div>
 
         <Heading color="controls" level="4">
           Add a new color
         </Heading>
-        <TextInput
-          placeholder="You can add a color here..."
-          onKeyDown={handleKeyDown}
-        />
+        <TextInput placeholder="You can add a color here..." onKeyDown={handleKeyDown} />
       </Box>
     </Grid>
   );

@@ -6,18 +6,16 @@ import { routes } from './utils';
 function Menu() {
   return (
     <Box pad={{ horizontal: 'medium', vertical: 'small' }}>
-      {routes.map((route) => {
-        return (
-          <Box key={route.to} pad={{ horizontal: 'medium', vertical: 'small' }}>
-            <Link to={route.to} title={route.text}>
-              {route.icon}
-              <Text size="large" color="light-1" margin="small">
-                {route.text}
-              </Text>
-            </Link>
-          </Box>
-        );
-      })}
+      {routes.map((route) => (
+        <Box key={route.to} pad={{ horizontal: 'medium', vertical: 'small' }}>
+          <Link to={route.to} title={route.text}>
+            {route.icon}
+            <Text size="large" color="light-1" margin="small">
+              {route.text}
+            </Text>
+          </Link>
+        </Box>
+      ))}
     </Box>
   );
 }

@@ -46,7 +46,10 @@ function FunctionWithStateExample() {
 
       <p>{text}</p>
 
-      <span>Visits: {visits}</span>
+      <span>
+        Visits:
+        {visits}
+      </span>
     </div>
   );
 }

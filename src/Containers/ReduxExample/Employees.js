@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Box, Button, DataTable, Heading } from 'grommet';
 import { Actions, FormClose, FormEdit, UserAdd } from 'grommet-icons';
-import {
-  openSideForm,
-  setSelectedEmployeeId,
-  removeEmployee,
-} from '../../redux/actions';
+import { openSideForm, setSelectedEmployeeId, removeEmployee } from '../../redux/actions';
 
 export const Employees = (props) => {
   const openSideForm = (id) => {
@@ -21,12 +17,7 @@ export const Employees = (props) => {
         Hey look!, Here's a list of employees
       </Heading>
 
-      <Button
-        onClick={() => openSideForm(null)}
-        label="Create"
-        alignSelf="end"
-        icon={<UserAdd />}
-      />
+      <Button onClick={() => openSideForm(null)} label="Create" alignSelf="end" icon={<UserAdd />} />
 
       <DataTable
         background={['light-4', 'controls']}

@@ -23,13 +23,7 @@ class ClassCalcPropExample extends Component {
         <Heading level="1" margin="none" color="controls">
           {result}
         </Heading>
-        <Button
-          type="button"
-          color="defult"
-          icon={<Refresh />}
-          onClick={clear}
-          label="Clear?"
-        />
+        <Button type="button" color="defult" icon={<Refresh />} onClick={clear} label="Clear?" />
       </Box>
     );
   }

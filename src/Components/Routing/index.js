@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Box } from 'grommet';
 import Main from '../../Containers/Main';
 import StateVsProps from '../../Containers/StateVsProps';
 import ThinkingInReact from '../../Containers/ThinkingInReact';
@@ -11,8 +12,8 @@ import ReduxToolkit from '../../Containers/ReduxToolkit';
 import ReactQuery from '../../Containers/ReactQuery';
 import Contentful from '../../Containers/Contentful';
 import Entry from '../../Containers/Contentful/Components/Entry';
+import CustomHookExample from '../../Containers/CustomHookExample';
 import NoMatch from './NoMatch';
-import { Box } from 'grommet';
 
 /**
  * Home will be <Main> component, to avoid matching to
@@ -56,6 +57,9 @@ function Routing() {
         </Route>
         <Route path="/contentful">
           <Contentful />
+        </Route>
+        <Route path="/custom-hook">
+          <CustomHookExample />
         </Route>
         <Route path="*">
           <NoMatch />

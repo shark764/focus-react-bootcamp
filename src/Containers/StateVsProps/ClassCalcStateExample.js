@@ -43,39 +43,20 @@ class ClassCalcStateExample extends Component {
         </Heading>
 
         <Box pad="xsmall" direction="row">
-          <TextInput
-            type="number"
-            name="num1"
-            placeholder="first numer"
-            value={num1}
-            onChange={this.handleChange}
-          />
-          <TextInput
-            type="number"
-            name="num2"
-            placeholder="second numer"
-            value={num2}
-            onChange={this.handleChange}
-          />
-          {['+', '-', '/', '*', '%', '**'].map((opType) => {
-            return (
-              <Button
-                key={opType}
-                type="button"
-                onClick={() => this.setOp(opType)}
-                active={op === opType}
-                label={opType}
-              />
-            );
-          })}
+          <TextInput type="number" name="num1" placeholder="first numer" value={num1} onChange={this.handleChange} />
+          <TextInput type="number" name="num2" placeholder="second numer" value={num2} onChange={this.handleChange} />
+          {['+', '-', '/', '*', '%', '**'].map((opType) => (
+            <Button
+              key={opType}
+              type="button"
+              onClick={() => this.setOp(opType)}
+              active={op === opType}
+              label={opType}
+            />
+          ))}
         </Box>
 
-        <ClassCalcPropExample
-          num1={num1}
-          num2={num2}
-          op={op}
-          clear={this.clear}
-        />
+        <ClassCalcPropExample num1={num1} num2={num2} op={op} clear={this.clear} />
       </Box>
     );
   }

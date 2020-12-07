@@ -63,11 +63,7 @@ export const FormLayout = (props) => {
           </FormField>
 
           <FormField name="region" label="Region" required>
-            <Select
-              name="region"
-              placeholder="Select a region"
-              options={['NA', 'CA', 'SA', 'EU', 'AS', 'OC', 'AF']}
-            />
+            <Select name="region" placeholder="Select a region" options={['NA', 'CA', 'SA', 'EU', 'AS', 'OC', 'AF']} />
           </FormField>
 
           <FormField name="phoneNumber" label="Phone Number" required>
@@ -91,12 +87,10 @@ FormLayout.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const selectedEmployee = state.root.employees.find((employee) => {
-    return employee.userId === state.root.selectedEmployeeId;
-  });
+  const selectedEmployee = state.root.employees.find((employee) => employee.userId === state.root.selectedEmployeeId);
 
   return {
-    initialValues: selectedEmployee ? selectedEmployee : defaultValue,
+    initialValues: selectedEmployee || defaultValue,
   };
 };
 

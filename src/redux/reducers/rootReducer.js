@@ -26,9 +26,7 @@ function rootReducer(state = initialState, action) {
 
     case 'UPDATE_EMPLOYEE': {
       const employees = [...state.employees];
-      const employeeIndex = employees.findIndex(
-        (employee) => employee.userId === action.payload.id
-      );
+      const employeeIndex = employees.findIndex((employee) => employee.userId === action.payload.id);
       employees[employeeIndex] = {
         ...employees[employeeIndex],
         ...action.payload.data,
@@ -43,9 +41,7 @@ function rootReducer(state = initialState, action) {
     case 'REMOVE_EMPLOYEE': {
       return {
         ...state,
-        employees: state.employees.filter((employee) => {
-          return employee.userId !== action.payload;
-        }),
+        employees: state.employees.filter((employee) => employee.userId !== action.payload),
       };
     }
 

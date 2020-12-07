@@ -5,11 +5,7 @@ import Item from './Item';
 function BaseList({ items }) {
   return (
     <Box pad="xxsmall">
-      <Grid
-        gap="medium"
-        rows="large"
-        columns={{ count: 'fit', size: ['small', 'medium'] }}
-      >
+      <Grid gap="medium" rows="large" columns={{ count: 'fit', size: ['small', 'medium'] }}>
         {items.map((item) => (
           <Item item={item} key={item.id} />
         ))}

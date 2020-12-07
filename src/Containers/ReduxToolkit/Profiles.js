@@ -48,30 +48,20 @@ function Profiles() {
       <Box align="start">
         <Button
           icon={<Apps size="large" />}
-          hoverIndicator={true}
+          hoverIndicator
           onClick={() => setOpenSidebar((isOpen) => !isOpen)}
           margin="medium"
         />
       </Box>
 
       <Box pad="xsmall" direction="row-responsive" gap="medium" wrap>
-        {profiles.map((profile) => {
-          return (
-            <Profile
-              key={profile.id}
-              profile={profile}
-              onRemove={handleRemove}
-            />
-          );
-        })}
+        {profiles.map((profile) => (
+          <Profile key={profile.id} profile={profile} onRemove={handleRemove} />
+        ))}
       </Box>
 
       {openSidebar && (
-        <SidebarLayer
-          onClose={() => setOpenSidebar(false)}
-          handleCreate={handleCreate}
-          handleUpdate={handleUpdate}
-        />
+        <SidebarLayer onClose={() => setOpenSidebar(false)} handleCreate={handleCreate} handleUpdate={handleUpdate} />
       )}
     </Grid>
   );

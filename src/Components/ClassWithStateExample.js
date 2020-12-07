@@ -20,7 +20,10 @@ class ClassWithStateExample extends Component {
     return (
       <div className="App-example">
         <p>{this.state.text}</p>
-        <span>Visits: {this.state.visits}</span>
+        <span>
+          Visits:
+          {this.state.visits}
+        </span>
       </div>
     );
   }

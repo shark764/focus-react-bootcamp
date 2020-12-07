@@ -9,7 +9,7 @@ import { getEntry } from '../sdk';
 function Record() {
   // We can use the `useParams` hook here to access
   // the dynamic pieces of the URL.
-  let { id } = useParams();
+  const { id } = useParams();
   const {
     // status,
     // isFetching,
@@ -17,23 +17,21 @@ function Record() {
     // error: queryError,
     data: entry,
   } = useQuery(`fetchRecord-${id}`, async () => {
-    const entry = await getEntry(id);
+    const cfEntry = await getEntry(id);
 
-    console.log(
-      `%cEntry fetched using... "${id}":`,
-      'background: #eee; color: #444;',
-      entry
-    );
-    return entry;
+    console.log(`%cEntry fetched using... "${id}":`, 'background: #eee; color: #444;', cfEntry);
+    return cfEntry;
   });
 
   return (
     <Box width="xxlarge">
       <Heading level="3" margin={{ vertical: 'medium' }}>
-        ID: {id}
+        ID: 
+{' '}
+{id}
       </Heading>
 
-      {entry && <JSONPretty id="json-pretty" data={entry}></JSONPretty>}
+      {entry && <JSONPretty id="json-pretty" data={entry} />}
     </Box>
   );
 }
