@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1147b3326683024e5c50c027dd199750",
+    "revision": "16539b7dc82513571605210b7d620611",
     "url": "/focus-react-bootcamp/index.html"
   },
   {
-    "revision": "237d4ef6de85f17522e2",
+    "revision": "af1bc6edb28195bfd1de",
     "url": "/focus-react-bootcamp/static/css/2.20e785d0.chunk.css"
   },
   {
-    "revision": "237d4ef6de85f17522e2",
-    "url": "/focus-react-bootcamp/static/js/2.666b6d81.chunk.js"
+    "revision": "af1bc6edb28195bfd1de",
+    "url": "/focus-react-bootcamp/static/js/2.b827182c.chunk.js"
   },
   {
     "revision": "3c73c585782ac05880c0f89bcfdbba5a",
-    "url": "/focus-react-bootcamp/static/js/2.666b6d81.chunk.js.LICENSE.txt"
+    "url": "/focus-react-bootcamp/static/js/2.b827182c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "89922b78c9f903cbe0af",
-    "url": "/focus-react-bootcamp/static/js/main.3dacf3cb.chunk.js"
+    "revision": "d669f7083da075d33a14",
+    "url": "/focus-react-bootcamp/static/js/main.3afa634e.chunk.js"
   },
   {
     "revision": "9db8c9b66fee131051eb",
