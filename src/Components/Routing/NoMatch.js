@@ -1,3 +1,4 @@
+import { Box, Heading, Text } from 'grommet';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -5,13 +6,15 @@ function NoMatch() {
   const location = useLocation();
 
   return (
-    <div>
-      <h3>
+    <Box alignSelf="center" align="center" justify="center" elevation="medium" width="large" pad="medium">
+      <Heading level="2">
         No match for
         {' '}
-        <code>{location.pathname}</code>
-      </h3>
-    </div>
+        <Text size="xxlarge" weight="bold" color="secondary">
+          {location.pathname}
+        </Text>
+      </Heading>
+    </Box>
   );
 }
 

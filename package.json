@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.0",
     "contentful": "^8.0.3",
+    "firebase": "^8.2.1",
     "grommet": "^2.15.2",
     "grommet-icons": "^4.5.0",
     "luxon": "^1.25.0",

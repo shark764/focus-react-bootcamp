@@ -6,14 +6,17 @@ import * as serviceWorker from './serviceWorker';
 
 import store from './redux/store';
 import QueryProvider from './query/QueryProvider';
+import UserAuthProvider from './auth/UserAuthProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <QueryProvider>
-        <App />
-      </QueryProvider>
-    </Provider>
+    <UserAuthProvider>
+      <Provider store={store}>
+        <QueryProvider>
+          <App />
+        </QueryProvider>
+      </Provider>
+    </UserAuthProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -13,7 +13,13 @@ import ReactQuery from '../../Containers/ReactQuery';
 import Contentful from '../../Containers/Contentful';
 import Entry from '../../Containers/Contentful/Components/Entry';
 import CustomHookExample from '../../Containers/CustomHookExample';
+import SignUp from '../Authentication/SignUp';
+import SignIn from '../Authentication/SignIn';
+import PasswordReset from '../Authentication/PasswordReset';
+import ProfilePage from '../Authentication/ProfilePage';
 import NoMatch from './NoMatch';
+import PrivateRoute from './PrivateRoute';
+import AuthRoute from './AuthRoute';
 
 /**
  * Home will be <Main> component, to avoid matching to
@@ -40,27 +46,39 @@ function Routing() {
         <Route path="/todos">
           <TodoExample />
         </Route>
-        <Route path="/apis">
+        <PrivateRoute path="/apis">
           <APIInteractions />
-        </Route>
-        <Route path="/redux">
+        </PrivateRoute>
+        <PrivateRoute exact path="/redux">
           <ReduxExample />
-        </Route>
-        <Route path="/redux-toolkit">
+        </PrivateRoute>
+        <PrivateRoute exact path="/redux-toolkit">
           <ReduxToolkit />
-        </Route>
-        <Route path="/react-query">
+        </PrivateRoute>
+        <PrivateRoute path="/react-query">
           <ReactQuery />
-        </Route>
-        <Route path="/contentful/entries/:id?">
+        </PrivateRoute>
+        <PrivateRoute exact path="/contentful/entries/:id?">
           <Entry />
-        </Route>
-        <Route path="/contentful">
+        </PrivateRoute>
+        <PrivateRoute exact path="/contentful">
           <Contentful />
-        </Route>
-        <Route path="/custom-hook">
+        </PrivateRoute>
+        <PrivateRoute path="/custom-hook">
           <CustomHookExample />
+        </PrivateRoute>
+        <AuthRoute path="/sign-up">
+          <SignUp />
+        </AuthRoute>
+        <AuthRoute path="/sign-in">
+          <SignIn />
+        </AuthRoute>
+        <Route path="/password-reset">
+          <PasswordReset />
         </Route>
+        <PrivateRoute path="/profile">
+          <ProfilePage />
+        </PrivateRoute>
         <Route path="*">
           <NoMatch />
         </Route>

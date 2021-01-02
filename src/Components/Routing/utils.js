@@ -13,7 +13,7 @@ import {
   VmMaintenance,
 } from 'grommet-icons';
 
-export const routes = [
+export const publicRoutes = [
   {
     to: '/',
     icon: <Home color="light-1" />,
@@ -39,6 +39,9 @@ export const routes = [
     icon: <Task color="light-1" />,
     text: 'Todo List',
   },
+];
+
+export const privateRoutes = [
   {
     to: '/apis',
     icon: <Node color="light-1" />,
@@ -71,4 +74,4 @@ export const routes = [
   },
 ];
 
-export default routes;
+export default [...publicRoutes, ...privateRoutes];

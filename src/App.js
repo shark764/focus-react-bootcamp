@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
-  Box, Button, Collapsible, Grommet, Heading, Layer, ResponsiveContext,
+  Avatar, Box, Button, Collapsible, Grommet, Heading, Layer, ResponsiveContext, Stack, Text,
 } from 'grommet';
-import { HashRouter } from 'react-router-dom';
-import { Apps, FormClose } from 'grommet-icons';
+import { HashRouter, Link } from 'react-router-dom';
+import {
+  Apps, FormClose, Logout, User,
+} from 'grommet-icons';
 import Routing from './Components/Routing';
-import Menu from './Components/Routing/Menu';
+import RtMenu from './Components/Routing/Menu';
 import NavBar from './Components/Routing/NavBar';
+import AccountMenu from './Components/Routing/AccountMenu';
+import { UserAuthContext } from './auth/UserAuthProvider';
+import { signOut } from './auth/firebase';
 
 const theme = {
   global: {
@@ -39,6 +44,9 @@ const theme = {
       pad: 'medium',
     },
   },
+  menu: {
+    background: 'brand',
+  },
 };
 
 const AppBar = (props) => (
@@ -56,6 +64,7 @@ const AppBar = (props) => (
 );
 
 function App() {
+  const [user] = useContext(UserAuthContext);
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
@@ -66,12 +75,16 @@ function App() {
             <Box fill>
               <AppBar>
                 <Heading level="4" margin="none">
-                  Hey look!, I&#39;m using Groomet
+                  {user ? `Welcome, ${user.displayName}` : "Hey look!, I'm using Groomet"}
                 </Heading>
 
                 <NavBar />
 
-                <Button icon={<Apps />} onClick={() => setShowSidebar(!showSidebar)} />
+                <Box justify="end" direction="row" gap="xsmall">
+                  <Button icon={<Apps />} onClick={() => setShowSidebar(!showSidebar)} />
+
+                  <AccountMenu />
+                </Box>
               </AppBar>
 
               <Box direction="row" flex overflow={{ horizontal: 'hidden' }}>
@@ -82,6 +95,60 @@ function App() {
                 {!showSidebar || size !== 'small' ? (
                   <Collapsible direction="horizontal" open={showSidebar}>
                     <Box
+                      align="center"
+                      gap="small"
+                      direction="row"
+                      // margin={{ bottom: 'large' }}
+                      pad="medium"
+                      background="harmonie-5"
+                    >
+                      {user ? (
+                        <Stack alignSelf="start" align="center" anchor="top-right">
+                          <Avatar src={user.photoURL} title={user.displayName} />
+                          <Box pad="xsmall" background="orange" round responsive={false} />
+                        </Stack>
+                      ) : (
+                        <Avatar background="default">
+                          <User color="secondary" />
+                        </Avatar>
+                      )}
+
+                      {user ? (
+                        <Box>
+                          <Text>{user.displayName}</Text>
+                          <Text size="small" weight="bold" color="harmonie-2">
+                            {user.email}
+                          </Text>
+
+                          <Button hoverIndicator="harmonie-6" onClick={signOut}>
+                            <Box direction="row" align="center" gap="xsmall">
+                              <Logout size="small" color="harmonie-3" />
+                              <Text size="small" color="harmonie-3">
+                                Sign Out
+                              </Text>
+                            </Box>
+                          </Button>
+                        </Box>
+                      ) : (
+                        <Box>
+                          <Link to="/sign-in" title="Sign In">
+                            <Text color="primary">Sign In</Text>
+                          </Link>
+                          <Link to="/sign-up" title="Sign Up">
+                            <Text color="harmonie-1" size="small">
+                              Sign Up
+                            </Text>
+                          </Link>
+                          <Link to="/password-reset" title="Forgot Password?">
+                            <Text color="harmonie-1" size="small">
+                              Forgot Password?
+                            </Text>
+                          </Link>
+                        </Box>
+                      )}
+                    </Box>
+
+                    <Box
                       flex
                       width="medium"
                       background="harmonie-4"
@@ -90,7 +157,7 @@ function App() {
                       justify="center"
                       fill="vertical"
                     >
-                      <Menu />
+                      <RtMenu />
                     </Box>
                   </Collapsible>
                 ) : (
@@ -99,7 +166,7 @@ function App() {
                       <Button icon={<FormClose />} onClick={() => setShowSidebar(false)} />
                     </Box>
                     <Box fill background="default" align="center" justify="center">
-                      <Menu />
+                      <RtMenu />
                     </Box>
                   </Layer>
                 )}

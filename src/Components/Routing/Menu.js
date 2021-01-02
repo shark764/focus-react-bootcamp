@@ -1,9 +1,13 @@
 import { Box, Text } from 'grommet';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { routes } from './utils';
+import { UserAuthContext } from '../../auth/UserAuthProvider';
+import allRoutes, { publicRoutes } from './utils';
 
 function Menu() {
+  const [user] = useContext(UserAuthContext);
+  const routes = user ? allRoutes : publicRoutes;
+
   return (
     <Box pad={{ horizontal: 'medium', vertical: 'small' }}>
       {routes.map((route) => (
