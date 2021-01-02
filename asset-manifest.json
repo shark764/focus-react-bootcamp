@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/focus-react-bootcamp/static/js/main.7b2714ee.chunk.js",
-    "main.js.map": "/focus-react-bootcamp/static/js/main.7b2714ee.chunk.js.map",
+    "main.js": "/focus-react-bootcamp/static/js/main.093e63a3.chunk.js",
+    "main.js.map": "/focus-react-bootcamp/static/js/main.093e63a3.chunk.js.map",
     "runtime-main.js": "/focus-react-bootcamp/static/js/runtime-main.77a9eb88.js",
     "runtime-main.js.map": "/focus-react-bootcamp/static/js/runtime-main.77a9eb88.js.map",
     "static/css/2.20e785d0.chunk.css": "/focus-react-bootcamp/static/css/2.20e785d0.chunk.css",
-    "static/js/2.505da946.chunk.js": "/focus-react-bootcamp/static/js/2.505da946.chunk.js",
-    "static/js/2.505da946.chunk.js.map": "/focus-react-bootcamp/static/js/2.505da946.chunk.js.map",
+    "static/js/2.c0e89721.chunk.js": "/focus-react-bootcamp/static/js/2.c0e89721.chunk.js",
+    "static/js/2.c0e89721.chunk.js.map": "/focus-react-bootcamp/static/js/2.c0e89721.chunk.js.map",
     "index.html": "/focus-react-bootcamp/index.html",
-    "precache-manifest.766c61614e636fd74dd77b80d94088c2.js": "/focus-react-bootcamp/precache-manifest.766c61614e636fd74dd77b80d94088c2.js",
+    "precache-manifest.0db5a2d2661421952dff635388455405.js": "/focus-react-bootcamp/precache-manifest.0db5a2d2661421952dff635388455405.js",
     "service-worker.js": "/focus-react-bootcamp/service-worker.js",
     "static/css/2.20e785d0.chunk.css.map": "/focus-react-bootcamp/static/css/2.20e785d0.chunk.css.map",
-    "static/js/2.505da946.chunk.js.LICENSE.txt": "/focus-react-bootcamp/static/js/2.505da946.chunk.js.LICENSE.txt"
+    "static/js/2.c0e89721.chunk.js.LICENSE.txt": "/focus-react-bootcamp/static/js/2.c0e89721.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.77a9eb88.js",
     "static/css/2.20e785d0.chunk.css",
-    "static/js/2.505da946.chunk.js",
-    "static/js/main.7b2714ee.chunk.js"
+    "static/js/2.c0e89721.chunk.js",
+    "static/js/main.093e63a3.chunk.js"
   ]
 }
