@@ -9,6 +9,7 @@ import {
   Html5,
   Node,
   Reactjs,
+  Storage,
   Task,
   VmMaintenance,
 } from 'grommet-icons';
@@ -71,6 +72,11 @@ export const privateRoutes = [
     to: '/custom-hook',
     icon: <Beacon color="light-1" />,
     text: 'Custom Hook Example',
+  },
+  {
+    to: '/firestore-crud',
+    icon: <Storage color="light-1" />,
+    text: 'Firebase Firestore Crud',
   },
 ];
 

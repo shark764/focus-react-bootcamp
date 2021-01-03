@@ -13,6 +13,7 @@ import ReactQuery from '../../Containers/ReactQuery';
 import Contentful from '../../Containers/Contentful';
 import Entry from '../../Containers/Contentful/Components/Entry';
 import CustomHookExample from '../../Containers/CustomHookExample';
+import FirestoreCrudExample from '../../Containers/FirestoreCrudExample';
 import SignUp from '../Authentication/SignUp';
 import SignIn from '../Authentication/SignIn';
 import PasswordReset from '../Authentication/PasswordReset';
@@ -66,6 +67,9 @@ function Routing() {
         </PrivateRoute>
         <PrivateRoute path="/custom-hook">
           <CustomHookExample />
+        </PrivateRoute>
+        <PrivateRoute path="/firestore-crud">
+          <FirestoreCrudExample />
         </PrivateRoute>
         <AuthRoute path="/sign-up">
           <SignUp />

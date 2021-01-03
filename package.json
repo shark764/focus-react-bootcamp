@@ -2,7 +2,7 @@
   "name": "focus-react-bootcamp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shark764.github.io/focus-react-bootcamp",
+  "homepage": ".",
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",

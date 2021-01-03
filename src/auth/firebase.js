@@ -15,11 +15,17 @@ const firebaseConfig = {
   measurementId: 'G-CV64YEW374',
 };
 
+const settings = {
+  timestampsInSnapshots: true,
+};
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 export const auth = firebase.auth();
+
+firebase.firestore().settings(settings);
 export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -76,3 +82,22 @@ export const generateUserDocument = async (user, additionalData) => {
   // eslint-disable-next-line consistent-return
   return getUserDocument(user.uid);
 };
+
+export const createPatient = (data) => firestore.collection('patients').add({
+  created: firebase.firestore.FieldValue.serverTimestamp(),
+  ...data,
+});
+
+export const getPatientsCollection = () => firestore.collection('patients');
+export const getPatients = () => getPatientsCollection().get();
+
+export const addStudyToPatient = (doc, study) => getPatientsCollection()
+  .doc(doc)
+  .update({
+    studies: firebase.firestore.FieldValue.arrayUnion(study),
+  });
+export const removeStudyFromPatient = (doc, study) => getPatientsCollection()
+  .doc(doc)
+  .update({
+    studies: firebase.firestore.FieldValue.arrayRemove(study),
+  });

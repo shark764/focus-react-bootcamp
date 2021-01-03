@@ -2,7 +2,9 @@ import React, { useContext, useState } from 'react';
 import {
   Avatar, Box, Button, Collapsible, Grommet, Heading, Layer, ResponsiveContext, Stack, Text,
 } from 'grommet';
-import { HashRouter, Link } from 'react-router-dom';
+import {
+  HashRouter, Link, Redirect, useHistory,
+} from 'react-router-dom';
 import {
   Apps, FormClose, Logout, User,
 } from 'grommet-icons';
@@ -104,8 +106,10 @@ function App() {
                     >
                       {user ? (
                         <Stack alignSelf="start" align="center" anchor="top-right">
-                          <Avatar src={user.photoURL} title={user.displayName} />
-                          <Box pad="xsmall" background="orange" round responsive={false} />
+                          <Link to="/profile">
+                            <Avatar src={user.photoURL} title={user.displayName} />
+                          </Link>
+                          <Box pad="xsmall" background="green" round responsive={false} />
                         </Stack>
                       ) : (
                         <Avatar background="default">
@@ -115,7 +119,9 @@ function App() {
 
                       {user ? (
                         <Box>
-                          <Text>{user.displayName}</Text>
+                          <Link to="/profile">
+                            <Text color="#f8f8f8">{user.displayName}</Text>
+                          </Link>
                           <Text size="small" weight="bold" color="harmonie-2">
                             {user.email}
                           </Text>
